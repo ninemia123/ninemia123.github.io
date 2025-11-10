@@ -424,7 +424,7 @@
 
         .add-shift-form {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr auto;
+            grid-template-columns: 2fr 1fr 1fr 1fr auto;
             gap: 0.5rem;
             margin-top: 1rem;
             align-items: end;
@@ -967,7 +967,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="shift-rate">Αντιτιμο ανά ώρα (€):</label>
-                                <input type="number" id="shift-rate" placeholder="Αφήστε κενό για 0" step="0.01" min="0">
+                                <input type="number" id="shift-rate" placeholder="Αφήστε κενό για προεπιλεγμένο" step="0.01" min="0">
                             </div>
                             <button id="save-shift">💾 Αποθήκευση Βάρδιας</button>
                             <button id="delete-shift" style="background-color: #dc3545; display: none;">🗑️ Διαγραφή Βάρδιας</button>
@@ -976,7 +976,7 @@
                     
                     <div class="shift-types-management">
                         <h4>🎨 Διαχείριση Τύπων Βαρδιών</h4>
-                        <p>Προσθέστε νέους τύπους βαρδιών και επιλέξτε ποιες βάρδιες θέλετε να εμφανίζουν το αντίτιμο</p>
+                        <p>Προσθέστε νέους τύπους βαρδιών και ορίστε προεπιλεγμένο αντίτιμο για κάθε τύπο</p>
                         
                         <div class="add-shift-form">
                             <div class="form-group">
@@ -990,6 +990,10 @@
                             <div class="form-group">
                                 <label for="new-shift-hours">Προεπιλεγμένες Ώρες:</label>
                                 <input type="number" id="new-shift-hours" value="8" min="1" max="24">
+                            </div>
+                            <div class="form-group">
+                                <label for="new-shift-rate">Προεπιλεγμένο Αντιτιμο (€):</label>
+                                <input type="number" id="new-shift-rate" placeholder="0.00" step="0.01" min="0">
                             </div>
                             <button id="add-shift-type">➕ Προσθήκη Τύπου</button>
                         </div>
@@ -1359,7 +1363,7 @@
                         <h4>Υπολογισμός ΕΦΑПAΞ</h4>
                         
                         <div class="form-group">
-                            <label for="totalContributions2014">Συνολικές Εισφορές έως 2014 (€):</label>
+                            <label for="totalContributions2014">Συνολικές Εισφορές μετα 2014 (€):</label>
                             <input type="number" id="totalContributions2014" placeholder="Π.χ. 15000">
                         </div>
                         
@@ -2321,13 +2325,25 @@
             document.getElementById('save-shift').addEventListener('click', saveShift);
             document.getElementById('delete-shift').addEventListener('click', deleteShift);
             
+            // Αλλαγή τύπου βάρδιας - αυτόματη συμπλήρωση αντιτίμου
             document.getElementById('shift-type').addEventListener('change', function() {
                 const selectedType = this.value;
                 const customHours = document.getElementById('custom-hours');
+                const rateInput = document.getElementById('shift-rate');
+                
                 if (selectedType === 'custom') {
                     customHours.style.display = 'block';
+                    rateInput.value = '';
                 } else {
                     customHours.style.display = 'none';
+                    // Αυτόματη συμπλήρωση προεπιλεγμένου αντιτίμου
+                    const typeId = parseInt(selectedType);
+                    const shiftType = shiftTypes.find(t => t.id === typeId);
+                    if (shiftType && shiftType.defaultRate) {
+                        rateInput.value = shiftType.defaultRate;
+                    } else {
+                        rateInput.value = '';
+                    }
                 }
             });
 
@@ -2913,11 +2929,11 @@
         function initializeShiftTypes() {
             if (shiftTypes.length === 0) {
                 shiftTypes = [
-                    { id: 1, name: 'Κανονική Βάρδια', color: '#4CAF50', hours: 8, showRate: true },
-                    { id: 2, name: 'Υπερωρία', color: '#FF9800', hours: 2, showRate: true },
-                    { id: 3, name: 'Αναπληρωτής', color: '#2196F3', hours: 8, showRate: true },
-                    { id: 4, name: 'Επιπλέον Βάρδια', color: '#9C27B0', hours: 4, showRate: false },
-                    { id: 5, name: 'Άδεια', color: '#F44336', hours: 0, showRate: false }
+                    { id: 1, name: 'Κανονική Βάρδια', color: '#4CAF50', hours: 8, defaultRate: 15.00, showRate: true },
+                    { id: 2, name: 'Υπερωρία', color: '#FF9800', hours: 2, defaultRate: 20.00, showRate: true },
+                    { id: 3, name: 'Αναπληρωτής', color: '#2196F3', hours: 8, defaultRate: 12.00, showRate: true },
+                    { id: 4, name: 'Επιπλέον Βάρδια', color: '#9C27B0', hours: 4, defaultRate: 18.00, showRate: false },
+                    { id: 5, name: 'Άδεια', color: '#F44336', hours: 0, defaultRate: 0.00, showRate: false }
                 ];
                 localStorage.setItem('shiftTypes', JSON.stringify(shiftTypes));
             }
@@ -2937,7 +2953,7 @@
                         <div class="shift-type-color" style="background-color: ${type.color}"></div>
                         <div class="shift-type-info">
                             <strong>${type.name}</strong>
-                            <div>${type.hours} ώρες</div>
+                            <div>${type.hours} ώρες - ${type.defaultRate}€/ώρα</div>
                         </div>
                     </div>
                     <div style="display: flex; align-items: center; gap: 10px;">
@@ -2946,6 +2962,7 @@
                                    onchange="toggleShiftTypeRate(${type.id})">
                             Εμφάνιση Αντίτιμου
                         </label>
+                        <button onclick="editShiftType(${type.id})" style="background-color: #17a2b8; padding: 0.25rem 0.5rem;">✏️</button>
                         <button onclick="removeShiftType(${type.id})" style="background-color: #dc3545; padding: 0.25rem 0.5rem;">🗑️</button>
                     </div>
                 `;
@@ -2960,7 +2977,7 @@
             shiftTypes.forEach(type => {
                 const option = document.createElement('option');
                 option.value = type.id;
-                option.textContent = type.name;
+                option.textContent = `${type.name} (${type.defaultRate}€/ώρα)`;
                 select.appendChild(option);
             });
             
@@ -2975,6 +2992,7 @@
             const name = document.getElementById('new-shift-name').value;
             const color = document.getElementById('new-shift-color').value;
             const hours = parseInt(document.getElementById('new-shift-hours').value);
+            const defaultRate = parseFloat(document.getElementById('new-shift-rate').value) || 0;
             
             if (!name) {
                 alert('Παρακαλώ εισάγετε όνομα βάρδιας');
@@ -2986,6 +3004,7 @@
                 name: name,
                 color: color,
                 hours: hours,
+                defaultRate: defaultRate,
                 showRate: true
             };
             
@@ -2996,6 +3015,26 @@
             
             // Καθαρισμός φόρμας
             document.getElementById('new-shift-name').value = '';
+            document.getElementById('new-shift-rate').value = '';
+        }
+
+        function editShiftType(typeId) {
+            const type = shiftTypes.find(t => t.id === typeId);
+            if (!type) return;
+            
+            const newRate = prompt(`Εισάγετε νέο προεπιλεγμένο αντίτιμο για ${type.name}:`, type.defaultRate);
+            if (newRate !== null) {
+                const rate = parseFloat(newRate);
+                if (!isNaN(rate) && rate >= 0) {
+                    type.defaultRate = rate;
+                    localStorage.setItem('shiftTypes', JSON.stringify(shiftTypes));
+                    renderShiftTypes();
+                    updateShiftTypeSelect();
+                    updateCalendar();
+                } else {
+                    alert('Παρακαλώ εισάγετε έγκυρο αριθμό');
+                }
+            }
         }
 
         function toggleShiftTypeRate(typeId) {
@@ -3119,7 +3158,9 @@
             } else {
                 document.getElementById('shift-type').value = shiftTypes[0].id;
                 document.getElementById('shift-hours').value = '';
-                document.getElementById('shift-rate').value = '';
+                // Αυτόματη συμπλήρωση προεπιλεγμένου αντιτίμου
+                const selectedType = shiftTypes[0];
+                document.getElementById('shift-rate').value = selectedType.defaultRate || '';
                 document.getElementById('delete-shift').style.display = 'none';
                 document.getElementById('custom-hours').style.display = 'none';
             }
@@ -3169,7 +3210,9 @@
             document.getElementById('shift-date').value = '';
             document.getElementById('shift-type').value = shiftTypes[0].id;
             document.getElementById('shift-hours').value = '';
-            document.getElementById('shift-rate').value = '';
+            // Αυτόματη συμπλήρωση προεπιλεγμένου αντιτίμου
+            const selectedType = shiftTypes[0];
+            document.getElementById('shift-rate').value = selectedType.defaultRate || '';
             document.getElementById('delete-shift').style.display = 'none';
             document.getElementById('custom-hours').style.display = 'none';
         }
