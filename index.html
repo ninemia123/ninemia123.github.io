@@ -35,6 +35,7 @@
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         header {
@@ -49,7 +50,7 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem;
         }
 
         .theme-toggle {
@@ -61,13 +62,18 @@
             color: white;
             cursor: pointer;
             font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .calculator-section {
             background-color: var(--card-bg);
             border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             box-shadow: var(--shadow);
         }
 
@@ -102,6 +108,7 @@
             font-size: 1rem;
             transition: background-color 0.3s;
             font-weight: bold;
+            min-height: 44px; /* Better touch target */
         }
 
         button:hover {
@@ -117,22 +124,25 @@
             border-left: 4px solid var(--primary-color);
         }
 
+        /* Improved calculator types for mobile */
         .calculator-types {
             display: flex;
             gap: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
             background: var(--card-bg);
-            padding: 1rem;
+            padding: 0.5rem;
             border-radius: 10px;
             box-shadow: var(--shadow);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .calc-type-btn {
             flex: 1;
             min-width: 120px;
             text-align: center;
-            padding: 1rem 0.5rem;
+            padding: 0.75rem 0.5rem;
             background: var(--card-bg);
             border: 2px solid var(--primary-color);
             border-radius: 5px;
@@ -140,6 +150,7 @@
             font-weight: bold;
             color: var(--primary-color);
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
         .calc-type-btn:hover {
@@ -172,6 +183,8 @@
             border-collapse: collapse;
             margin: 1rem 0;
             font-size: 14px;
+            overflow-x: auto;
+            display: block;
         }
 
         .pensionable-earnings-table th,
@@ -179,6 +192,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
+            white-space: nowrap;
         }
 
         .pensionable-earnings-table th {
@@ -234,8 +248,8 @@
         .calendar-section {
             background-color: var(--card-bg);
             border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             box-shadow: var(--shadow);
         }
 
@@ -243,41 +257,50 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
             background: rgba(44, 85, 48, 0.1);
             border-radius: 10px;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .calendar-nav {
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
+        }
+
+        .calendar-nav button {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.9rem;
         }
 
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-            margin-bottom: 1.5rem;
+            gap: 3px;
+            margin-bottom: 1rem;
         }
 
         .calendar-day-header {
             background-color: var(--primary-color);
             color: white;
-            padding: 0.75rem;
+            padding: 0.5rem;
             text-align: center;
             font-weight: bold;
             border-radius: 5px;
+            font-size: 0.8rem;
         }
 
         .calendar-day {
             background-color: rgba(44, 85, 48, 0.05);
             border: 1px solid #ddd;
-            padding: 0.75rem;
-            min-height: 100px;
+            padding: 0.5rem;
+            min-height: 70px;
             cursor: pointer;
             transition: background-color 0.3s;
             border-radius: 5px;
+            font-size: 0.8rem;
         }
 
         .calendar-day:hover {
@@ -292,14 +315,14 @@
 
         .day-number {
             font-weight: bold;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             color: var(--primary-color);
         }
 
         .shift-info {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             margin-top: 0.25rem;
-            padding: 4px 8px;
+            padding: 2px 4px;
             border-radius: 3px;
             background: rgba(255,255,255,0.8);
         }
@@ -307,13 +330,13 @@
         .shifts-management {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
         .shift-form {
             background-color: rgba(44, 85, 48, 0.05);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 10px;
             border: 2px solid var(--primary-color);
         }
@@ -349,22 +372,22 @@
 
         .earnings-summary {
             background-color: rgba(44, 85, 48, 0.1);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 10px;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             border: 2px solid var(--primary-color);
         }
 
         .summary-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         .summary-item {
             text-align: center;
-            padding: 1rem;
+            padding: 0.75rem;
             background-color: var(--card-bg);
             border-radius: 5px;
             border: 1px solid #ddd;
@@ -372,7 +395,7 @@
         }
 
         .summary-value {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--primary-color);
             margin-top: 0.5rem;
@@ -381,17 +404,17 @@
         /* Διαχείριση τύπων βαρδιών */
         .shift-types-management {
             background-color: rgba(44, 85, 48, 0.05);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 10px;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             border: 2px solid var(--primary-color);
         }
 
         .shift-types-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
         }
 
         .shift-type-item {
@@ -419,46 +442,46 @@
         }
 
         .shift-type-checkbox {
-            margin-left: 1rem;
+            margin-left: 0.5rem;
         }
 
         .add-shift-form {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr auto;
+            grid-template-columns: 1fr;
             gap: 0.5rem;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
             align-items: end;
         }
 
         /* Στυλ για τις άλλες καρτέλες */
         .pension-grid, .supplementary-grid, .efapax-grid, .deductions-grid, .salary-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 1rem;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 0.75rem;
         }
 
         .earnings-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 1rem;
             margin-bottom: 1rem;
         }
 
         .dtk-dm-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 1rem;
         }
 
         .supplementary-section {
-            margin-top: 2rem;
-            padding-top: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
             border-top: 2px solid var(--primary-color);
         }
 
         .percentage-table, .ranta-table {
-            margin-top: 1rem;
+            margin-top: 0.75rem;
             max-height: 300px;
             overflow-y: auto;
         }
@@ -481,7 +504,7 @@
         }
 
         .year-section {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .year-title {
@@ -494,7 +517,7 @@
         }
 
         .year-content {
-            padding: 1rem;
+            padding: 0.75rem;
             border: 2px solid var(--primary-color);
             border-top: none;
             border-radius: 0 0 5px 5px;
@@ -502,24 +525,27 @@
 
         .average-section {
             background-color: rgba(44, 85, 48, 0.1);
-            padding: 1rem;
+            padding: 0.75rem;
             border-radius: 5px;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
             text-align: center;
         }
 
         .deductions-table, .tax-table, .children-tax-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
+            overflow-x: auto;
+            display: block;
         }
 
         .deductions-table th, .deductions-table td,
         .tax-table th, .tax-table td,
         .children-tax-table th, .children-tax-table td {
-            padding: 0.75rem;
+            padding: 0.5rem;
             text-align: left;
             border: 1px solid #ddd;
+            white-space: nowrap;
         }
 
         .deductions-table th, .tax-table th, .children-tax-table th {
@@ -533,24 +559,24 @@
 
         .example-section {
             background-color: rgba(44, 85, 48, 0.1);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 5px;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .extra-info {
             background-color: rgba(44, 85, 48, 0.05);
-            padding: 1rem;
+            padding: 0.75rem;
             border-radius: 5px;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
             border-left: 3px solid var(--secondary-color);
         }
 
         .note {
             background-color: #fff3cd;
             border-left: 4px solid #ffc107;
-            padding: 1rem;
-            margin: 1rem 0;
+            padding: 0.75rem;
+            margin: 0.75rem 0;
             border-radius: 5px;
             font-style: italic;
         }
@@ -558,8 +584,8 @@
         .warning-note {
             background-color: #f8d7da;
             border-left: 4px solid #dc3545;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 8px;
+            margin: 8px 0;
             font-weight: bold;
             text-align: center;
         }
@@ -567,15 +593,15 @@
         .instruction {
             background-color: #fff3cd;
             border-left: 4px solid #ffc107;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 8px;
+            margin: 8px 0;
             font-style: italic;
             text-align: center;
         }
 
         .salary-scale {
             background-color: rgba(44, 85, 48, 0.05);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 5px;
             border: 2px solid var(--primary-color);
         }
@@ -612,7 +638,7 @@
 
         .salary-calculations {
             background-color: rgba(44, 85, 48, 0.05);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 5px;
             border: 2px solid var(--primary-color);
         }
@@ -620,13 +646,16 @@
         .salary-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
+            overflow-x: auto;
+            display: block;
         }
 
         .salary-table th, .salary-table td {
-            padding: 0.75rem;
+            padding: 0.5rem;
             text-align: center;
             border: 1px solid #ddd;
+            white-space: nowrap;
         }
 
         .salary-table th {
@@ -640,15 +669,15 @@
         }
 
         .salary-input-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .current-scale {
             background-color: rgba(44, 85, 48, 0.2);
-            padding: 1rem;
+            padding: 0.75rem;
             border-radius: 5px;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             border: 2px solid var(--primary-color);
         }
 
@@ -656,14 +685,17 @@
         .weekly-time-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 30px;
-            font-size: 14px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            overflow-x: auto;
+            display: block;
         }
         
         .weekly-time-table th, .weekly-time-table td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 6px;
             text-align: center;
+            white-space: nowrap;
         }
         
         .weekly-time-table th {
@@ -699,8 +731,8 @@
         
         .weekly-section-title {
             background-color: #d4edda;
-            padding: 10px;
-            margin: 20px 0 10px 0;
+            padding: 8px;
+            margin: 15px 0 8px 0;
             border-left: 5px solid #28a745;
             font-weight: bold;
         }
@@ -708,25 +740,25 @@
         .formula {
             font-family: monospace;
             background-color: #f8f9fa;
-            padding: 10px;
+            padding: 8px;
             border-radius: 5px;
-            margin: 10px 0;
+            margin: 8px 0;
         }
 
         /* Στυλ για διαχείριση δεδομένων */
         .data-management {
             background-color: rgba(44, 85, 48, 0.1);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 10px;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             border: 2px solid var(--primary-color);
         }
 
         .data-buttons {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
         }
 
         .export-btn {
@@ -742,8 +774,8 @@
         }
 
         .import-section {
-            margin-top: 1rem;
-            padding: 1rem;
+            margin-top: 0.75rem;
+            padding: 0.75rem;
             background-color: rgba(44, 85, 48, 0.05);
             border-radius: 5px;
             border-left: 4px solid var(--primary-color);
@@ -751,29 +783,29 @@
 
         .data-info {
             background-color: rgba(255, 255, 255, 0.8);
-            padding: 1rem;
+            padding: 0.75rem;
             border-radius: 5px;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
             font-size: 0.9rem;
         }
 
         /* Στυλ για ΔΑΝΕΙΟ */
         .loan-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1rem;
         }
 
         .loan-inputs {
             background-color: rgba(44, 85, 48, 0.05);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 10px;
             border: 2px solid var(--primary-color);
         }
 
         .loan-results {
             background-color: rgba(44, 85, 48, 0.1);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 10px;
             border: 2px solid var(--primary-color);
         }
@@ -781,15 +813,18 @@
         .amortization-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
-            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            display: block;
         }
 
         .amortization-table th,
         .amortization-table td {
             border: 1px solid #ddd;
-            padding: 0.5rem;
+            padding: 0.4rem;
             text-align: center;
+            white-space: nowrap;
         }
 
         .amortization-table th {
@@ -800,82 +835,293 @@
         /* Στυλ για Διαχείριση ΔΤΚ */
         .dtk-management-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.75rem;
         }
 
         .decade-section {
             border: 1px solid var(--primary-color);
             border-radius: 5px;
-            padding: 1rem;
-            margin-bottom: 1rem;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
         }
 
-        @media (max-width: 768px) {
-            .data-buttons {
-                grid-template-columns: 1fr;
+        /* Mobile-specific improvements */
+        .mobile-scroll-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Responsive improvements for larger screens */
+        @media (min-width: 768px) {
+            .container {
+                padding: 2rem;
             }
             
-            .container {
+            .calculator-section {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .calculator-types {
+                margin-bottom: 2rem;
                 padding: 1rem;
             }
             
-            .shifts-management, .pension-grid, .supplementary-grid, 
-            .efapax-grid, .deductions-grid, .salary-grid, .loan-grid {
-                grid-template-columns: 1fr;
+            .calc-type-btn {
+                padding: 1rem 0.5rem;
+                font-size: 1rem;
+            }
+            
+            .calendar-section {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .calendar-header {
+                margin-bottom: 1.5rem;
+                padding: 1rem;
+            }
+            
+            .calendar-nav {
+                gap: 1rem;
+            }
+            
+            .calendar-nav button {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
             }
             
             .calendar-grid {
-                grid-template-columns: repeat(7, 1fr);
-                font-size: 0.8rem;
+                gap: 5px;
+                margin-bottom: 1.5rem;
             }
             
             .calendar-day {
-                min-height: 80px;
-                padding: 0.5rem;
+                padding: 0.75rem;
+                min-height: 100px;
+                font-size: 1rem;
             }
             
-            .add-shift-form {
-                grid-template-columns: 1fr;
+            .calendar-day-header {
+                padding: 0.75rem;
+                font-size: 1rem;
             }
             
-            .shift-types-grid {
-                grid-template-columns: 1fr;
+            .shift-info {
+                font-size: 0.8rem;
+                padding: 4px 8px;
+            }
+            
+            .shifts-management {
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+            
+            .shift-form {
+                padding: 1.5rem;
+            }
+            
+            .earnings-summary {
+                padding: 1.5rem;
+                margin-top: 1.5rem;
             }
             
             .summary-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+                margin-top: 1rem;
             }
             
-            .earnings-row, .dtk-dm-row {
-                grid-template-columns: 1fr;
+            .summary-item {
+                padding: 1rem;
             }
             
-            .weekly-time-table, .salary-table {
-                font-size: 12px;
+            .summary-value {
+                font-size: 1.5rem;
             }
             
-            .weekly-time-table th, .weekly-time-table td,
+            .shift-types-management {
+                padding: 1.5rem;
+                margin-top: 1.5rem;
+            }
+            
+            .shift-types-grid {
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+            
+            .add-shift-form {
+                grid-template-columns: 2fr 1fr 1fr 1fr auto;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+            
+            .pension-grid, .supplementary-grid, .efapax-grid, .deductions-grid, .salary-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                margin-top: 1rem;
+            }
+            
+            .earnings-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .dtk-dm-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .supplementary-section {
+                margin-top: 2rem;
+                padding-top: 2rem;
+            }
+            
+            .year-section {
+                margin-bottom: 2rem;
+            }
+            
+            .year-content {
+                padding: 1rem;
+            }
+            
+            .average-section {
+                padding: 1rem;
+                margin-top: 1rem;
+            }
+            
+            .deductions-table, .tax-table, .children-tax-table {
+                margin-top: 1rem;
+            }
+            
+            .deductions-table th, .deductions-table td,
+            .tax-table th, .tax-table td,
+            .children-tax-table th, .children-tax-table td {
+                padding: 0.75rem;
+            }
+            
+            .example-section {
+                padding: 1.5rem;
+                margin-top: 1.5rem;
+            }
+            
+            .extra-info {
+                padding: 1rem;
+                margin-top: 1rem;
+            }
+            
+            .note {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+            
+            .warning-note {
+                padding: 10px;
+                margin: 10px 0;
+            }
+            
+            .instruction {
+                padding: 10px;
+                margin: 10px 0;
+            }
+            
+            .salary-scale {
+                padding: 1.5rem;
+            }
+            
+            .salary-calculations {
+                padding: 1.5rem;
+            }
+            
+            .salary-table {
+                margin-top: 1rem;
+            }
+            
             .salary-table th, .salary-table td {
-                padding: 4px;
+                padding: 0.75rem;
             }
             
-            .pensionable-earnings-table {
-                font-size: 12px;
+            .salary-input-group {
+                margin-bottom: 1.5rem;
             }
             
-            .pensionable-earnings-table th,
-            .pensionable-earnings-table td {
-                padding: 4px;
+            .current-scale {
+                padding: 1rem;
+                margin-bottom: 1rem;
             }
             
-            .calculation-row {
-                grid-template-columns: 1fr;
+            .weekly-time-table {
+                margin-bottom: 30px;
+                font-size: 14px;
+            }
+            
+            .weekly-time-table th, .weekly-time-table td {
+                padding: 8px;
+            }
+            
+            .weekly-section-title {
+                padding: 10px;
+                margin: 20px 0 10px 0;
+            }
+            
+            .formula {
+                padding: 10px;
+                margin: 10px 0;
+            }
+            
+            .data-management {
+                padding: 1.5rem;
+                margin-top: 1.5rem;
+            }
+            
+            .data-buttons {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+            
+            .import-section {
+                margin-top: 1rem;
+                padding: 1rem;
+            }
+            
+            .data-info {
+                padding: 1rem;
+                margin-top: 1rem;
+            }
+            
+            .loan-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            
+            .loan-inputs {
+                padding: 1.5rem;
+            }
+            
+            .loan-results {
+                padding: 1.5rem;
+            }
+            
+            .amortization-table {
+                margin-top: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .amortization-table th,
+            .amortization-table td {
+                padding: 0.5rem;
             }
             
             .dtk-management-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+            
+            .decade-section {
+                padding: 1rem;
+                margin-bottom: 1rem;
             }
         }
 
@@ -885,11 +1131,11 @@
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.75rem;
             border-bottom: 3px solid var(--primary-color);
             padding-bottom: 0.5rem;
         }
@@ -900,10 +1146,30 @@
 
         footer {
             text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
             border-top: 1px solid #ddd;
             color: var(--text-color);
+        }
+
+        /* Mobile-specific header */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            .theme-toggle {
+                top: 0.5rem;
+                right: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -917,7 +1183,7 @@
         <section class="calculator-section">
             <h2>Επιλέξτε Τύπο Υπολογισμού</h2>
             
-            <div class="calculator-types">
+            <div class="calculator-types mobile-scroll-container">
                 <button class="calc-type-btn active" data-calc="calendar">📅 ΗΜΕΡΟΛΟΓΙΟ</button>
                 <button class="calc-type-btn" data-calc="pensionable-earnings">📊 ΥΠΟΛ ΣΥΝΤΑΞΗΣ</button>
                 <button class="calc-type-btn" data-calc="pension">💰 ΚΥΡΙΑ ΣΥΝΤΑΞΗ</button>
@@ -1049,34 +1315,36 @@
 
                 <h4 class="section-title">Πίνακας Υπολογισμού Συνταξίμων Αποδοχών</h4>
                 
-                <table class="pensionable-earnings-table">
-                    <thead>
-                        <tr>
-                            <th>Έτος</th>
-                            <th>Συντάξιμες Αποδοχές (€)</th>
-                            <th>Δείκτης Τιμών Καταναλωτή</th>
-                            <th>Αναπροσαρμοσμένες Αποδοχές (€)</th>
-                            <th>ΔΜ (%)</th>
-                            <th>Μηνιαίος Μισθός μετά ΔΜ</th>
-                        </tr>
-                    </thead>
-                    <tbody id="pensionable-earnings-body">
-                        <!-- Πίνακας θα γεμίσει με JavaScript -->
-                    </tbody>
-                    <tfoot>
-                        <tr class="year-total">
-                            <td><strong>ΣΥΝΟΛΟ</strong></td>
-                            <td id="total-earnings">0.00</td>
-                            <td>-</td>
-                            <td id="total-adjusted">0.00</td>
-                            <td>-</td>
-                            <td id="total-dm">0.00</td>
-                        </tr>
-                    </tfoot>
-                </table>
+                <div class="mobile-scroll-container">
+                    <table class="pensionable-earnings-table">
+                        <thead>
+                            <tr>
+                                <th>Έτος</th>
+                                <th>Συντάξιμες Αποδοχές (€)</th>
+                                <th>Δείκτης Τιμών Καταναλωτή</th>
+                                <th>Αναπροσαρμοσμένες Αποδοχές (€)</th>
+                                <th>ΔΜ (%)</th>
+                                <th>Μηνιαίος Μισθός μετά ΔΜ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pensionable-earnings-body">
+                            <!-- Πίνακας θα γεμίσει με JavaScript -->
+                        </tbody>
+                        <tfoot>
+                            <tr class="year-total">
+                                <td><strong>ΣΥΝΟΛΟ</strong></td>
+                                <td id="total-earnings">0.00</td>
+                                <td>-</td>
+                                <td id="total-adjusted">0.00</td>
+                                <td>-</td>
+                                <td id="total-dm">0.00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
 
                 <!-- ΝΕΟ: Διαχείριση ΔΤΚ -->
-                <div class="shift-types-management" style="margin-top: 2rem;">
+                <div class="shift-types-management" style="margin-top: 1.5rem;">
                     <h4>⚙️ Διαχείριση ΔΤΚ (Δείκτης Τιμών Καταναλωτή)</h4>
                     <p>Εδώ μπορείτε να τροποποιήσετε τις τιμές του ΔΤΚ για κάθε έτος</p>
                     
@@ -1084,7 +1352,7 @@
                         <!-- Τιμές ΔΤΚ θα γεμίσουν με JavaScript -->
                     </div>
                     
-                    <button onclick="resetDtkValues()" style="background-color: #ffc107; color: black; margin-top: 1rem;">
+                    <button onclick="resetDtkValues()" style="background-color: #ffc107; color: black; margin-top: 0.75rem;">
                         🔄 Επαναφορά ΔΤΚ σε Προεπιλεγμένες Τιμές
                     </button>
                 </div>
@@ -1101,7 +1369,7 @@
                         </div>
                         <div class="form-group">
                             <label for="dm-percentage">ΔΜ (%):</label>
-                            <input type="number" id="dm-percentage" step="0.1" value="5">
+                            <input type="number" id="dm-percentage" step="0.1" value="0">
                         </div>
                     </div>
                     
@@ -1152,7 +1420,7 @@
             <div id="pension-calc" class="calculator-form">
                 <h3>💰 Κύρια Σύνταξη</h3>
                 
-                <div class="note" style="margin-bottom: 1.5rem;">
+                <div class="note" style="margin-bottom: 1rem;">
                     <strong>ΣΗΜΑΝΤΙΚΗ ΣΗΜΕΙΩΣΗ:</strong> ο ΔΤΚ μπαινει ΣΤΟ ΕΚΑΣΤΟΤΕ ΕΤΟΣ κι τελος. Όταν πάρουμε τις συνταξίμες αποδοχές κατ' έτος θα διορθωθεί. Τώρα έτσι είναι μια κοντινή προσεγγιση.
                 </div>
                 
@@ -1407,70 +1675,72 @@
                     <div>
                         <h4 class="section-title">Κρατήσεις & Σημασία</h4>
                         
-                        <table class="deductions-table">
-                            <thead>
-                                <tr>
-                                    <th>ΚΡΑΤΗΣΕΙΣ</th>
-                                    <th>ΤΙ ΣΗΜΑΙΝΕΙ</th>
-                                    <th>ΤΙ ΔΙΝΟΥΜΕ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>ΤΠΔΥ</strong></td>
-                                    <td>ΕΦΑΠΑΞ</td>
-                                    <td>4%</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΜΤΠΥ</strong></td>
-                                    <td>ΜΕΤΟΧΙΚΟ ΜΕΡΙΣΜΑ</td>
-                                    <td>4.5%</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΤΕΑΔΥ</strong></td>
-                                    <td>ΕΠΙΚΟΥΡΙΚΗ</td>
-                                    <td>3%</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΥΓΕΙΟΝ ΑΣΦ</strong></td>
-                                    <td>ΥΓΕΙΟΝΟΜΙΚΗ ΠΕΡΙΘΑΛΨΗ</td>
-                                    <td>2.05%</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΕΦΚΑ ΣΥΝΤΑΞΗ</strong></td>
-                                    <td>ΥΠΕΡ ΣΥΝΤΑΞΗΣ</td>
-                                    <td>6.67%</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΜΤΠΥ ΝΕΟΔ/ΣΤΟΥ</strong></td>
-                                    <td>ΕΓΡΑΦΗ ΣΤΟ ΜΤΠΥ</td>
-                                    <td>1 ΑΚΑΘΑΡΙΣΤΟΣ ΜΙΣΘΟΣ ΔΙΑ 12</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΕΙΣΦΟΡΑ ΥΠΕΡ ΑΝΕΡΓΙΑΣ</strong></td>
-                                    <td></td>
-                                    <td>2% (ΜΝΗΜΟΝΙΑΚΟΣ ΝΟΜΟΣ)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΜΤΠΥ ΝΥΧΤΕΡΙΝΑ, ΠΡ. ΔΙΑΦΟΡΑ ΚΤΛ</strong></td>
-                                    <td></td>
-                                    <td>2% (ΜΗ ΑΝΤΑΠΟΔΟΤΙΚΟ)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΦΜΥ</strong></td>
-                                    <td>ΦΟΡΟΣ ΜΙΣΘΩΤΩΝ ΥΠΗΡΕΣΙΩΝ</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΦΟΡΟΣ</strong></td>
-                                    <td>ΣΕ ΕΚΤΑΚΕΣ ΑΠΟΔΟΧΕΣ ΠΧ ΝΥΧΤΕΡΙΝΑ</td>
-                                    <td>20%</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="mobile-scroll-container">
+                            <table class="deductions-table">
+                                <thead>
+                                    <tr>
+                                        <th>ΚΡΑΤΗΣΕΙΣ</th>
+                                        <th>ΤΙ ΣΗΜΑΙΝΕΙ</th>
+                                        <th>ΤΙ ΔΙΝΟΥΜΕ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>ΤΠΔΥ</strong></td>
+                                        <td>ΕΦΑΠΑΞ</td>
+                                        <td>4%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΜΤΠΥ</strong></td>
+                                        <td>ΜΕΤΟΧΙΚΟ ΜΕΡΙΣΜΑ</td>
+                                        <td>4.5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΤΕΑΔΥ</strong></td>
+                                        <td>ΕΠΙΚΟΥΡΙΚΗ</td>
+                                        <td>3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΥΓΕΙΟΝ ΑΣΦ</strong></td>
+                                        <td>ΥΓΕΙΟΝΟΜΙΚΗ ΠΕΡΙΘΑΛΨΗ</td>
+                                        <td>2.05%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΕΦΚΑ ΣΥΝΤΑΞΗ</strong></td>
+                                        <td>ΥΠΕΡ ΣΥΝΤΑΞΗΣ</td>
+                                        <td>6.67%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΜΤΠΥ ΝΕΟΔ/ΣΤΟΥ</strong></td>
+                                        <td>ΕΓΡΑΦΗ ΣΤΟ ΜΤΠΥ</td>
+                                        <td>1 ΑΚΑΘΑΡΙΣΤΟΣ ΜΙΣΘΟΣ ΔΙΑ 12</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΕΙΣΦΟΡΑ ΥΠΕΡ ΑΝΕΡΓΙΑΣ</strong></td>
+                                        <td></td>
+                                        <td>2% (ΜΝΗΜΟΝΙΑΚΟΣ ΝΟΜΟΣ)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΜΤΠΥ ΝΥΧΤΕΡΙΝΑ, ΠΡ. ΔΙΑΦΟΡΑ ΚΤΛ</strong></td>
+                                        <td></td>
+                                        <td>2% (ΜΗ ΑΝΤΑΠΟΔΟΤΙΚΟ)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΦΜΥ</strong></td>
+                                        <td>ΦΟΡΟΣ ΜΙΣΘΩΤΩΝ ΥΠΗΡΕΣΙΩΝ</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΦΟΡΟΣ</strong></td>
+                                        <td>ΣΕ ΕΚΤΑΚΕΣ ΑΠΟΔΟΧΕΣ ΠΧ ΝΥΧΤΕΡΙΝΑ</td>
+                                        <td>20%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
                         <!-- Νέα ενότητα για έκτακτα -->
-                        <div class="extra-info" style="margin-top: 2rem;">
+                        <div class="extra-info" style="margin-top: 1.5rem;">
                             <h4>ΕΙΣΦΟΡΕΣ ΣΤΑ ΕΚΤΑΚΤΑ (π.χ. ΝΥΧΤΕΡΙΝΑ)</h4>
                             <p><strong>2%</strong></p>
                             <p style="margin-top: 0.5rem; font-size: 0.9rem;">
@@ -1496,104 +1766,110 @@
                         
                         <div class="example-section">
                             <h4>Παράδειγμα Υπολογισμού</h4>
-                            <table class="deductions-table">
-                                <tr>
-                                    <td><strong>ΒΑΣΙΚΟΣ ΜΚ</strong></td>
-                                    <td>958€</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΕΠΙΚΙΝΔΥΝΟ</strong></td>
-                                    <td>150€</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΣΥΝΟΛΟ</strong></td>
-                                    <td><strong>1108€</strong></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><strong>ΚΡΑΤΗΣΕΙΣ</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>ΤΠΔΥ (4% × 1108)</td>
-                                    <td>44.32€</td>
-                                </tr>
-                                <tr>
-                                    <td>ΜΤΠΥ (4.5% × 1108)</td>
-                                    <td>49.86€</td>
-                                </tr>
-                                <tr>
-                                    <td>ΤΕΑΔΥ (3% × 1108)</td>
-                                    <td>33.24€</td>
-                                </tr>
-                                <tr>
-                                    <td>ΥΓΝΜΚΗ (2.05% × 1108)</td>
-                                    <td>22.71€</td>
-                                </tr>
-                                <tr>
-                                    <td>ΕΙΣΦ ΓΙΑ ΑΝΕΡΓΕΙΑ (2% × 1108)</td>
-                                    <td>22.16€</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΣΥΝΟΛΟ ΚΡΑΤΗΣΕΩΝ</strong></td>
-                                    <td><strong>172.29€</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΠΡΟ ΦΟΡΟΥ</strong></td>
-                                    <td><strong>935.71€</strong></td>
-                                </tr>
+                            <div class="mobile-scroll-container">
+                                <table class="deductions-table">
+                                    <tr>
+                                        <td><strong>ΒΑΣΙΚΟΣ ΜΚ</strong></td>
+                                        <td>958€</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΕΠΙΚΙΝΔΥΝΟ</strong></td>
+                                        <td>150€</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΣΥΝΟΛΟ</strong></td>
+                                        <td><strong>1108€</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><strong>ΚΡΑΤΗΣΕΙΣ</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ΤΠΔΥ (4% × 1108)</td>
+                                        <td>44.32€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ΜΤΠΥ (4.5% × 1108)</td>
+                                        <td>49.86€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ΤΕΑΔΥ (3% × 1108)</td>
+                                        <td>33.24€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ΥΓΝΜΚΗ (2.05% × 1108)</td>
+                                        <td>22.71€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ΕΙΣΦ ΓΙΑ ΑΝΕΡΓΕΙΑ (2% × 1108)</td>
+                                        <td>22.16€</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΣΥΝΟΛΟ ΚΡΑΤΗΣΕΩΝ</strong></td>
+                                        <td><strong>172.29€</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΠΡΟ ΦΟΡΟΥ</strong></td>
+                                        <td><strong>935.71€</strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <h4 style="margin-top: 1.5rem;">Φόρος Κλίμακας 2026</h4>
+                        <div class="mobile-scroll-container">
+                            <table class="tax-table">
+                                <thead>
+                                    <tr>
+                                        <th>Εισόδημα</th>
+                                        <th>Φορολογικός Συντελεστής</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Έως 10,000€</td>
+                                        <td>9% (90€ φόρος)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Από 10,001€ έως 20,000€</td>
+                                        <td>20%</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
 
-                        <h4 style="margin-top: 2rem;">Φόρος Κλίμακας 2026</h4>
-                        <table class="tax-table">
-                            <thead>
-                                <tr>
-                                    <th>Εισόδημα</th>
-                                    <th>Φορολογικός Συντελεστής</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Έως 10,000€</td>
-                                    <td>9% (90€ φόρος)</td>
-                                </tr>
-                                <tr>
-                                    <td>Από 10,001€ έως 20,000€</td>
-                                    <td>20%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <h4 style="margin-top: 1.5rem;">Φόρος ανά Αριθμό Τέκνων</h4>
-                        <table class="children-tax-table">
-                            <thead>
-                                <tr>
-                                    <th>Αριθμός Τέκνων</th>
-                                    <th>Φορολογικός Συντελεστής</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>0 ΤΕΚΝΑ</td>
-                                    <td>20%</td>
-                                </tr>
-                                <tr>
-                                    <td>1 ΤΕΚΝΟ</td>
-                                    <td>18%</td>
-                                </tr>
-                                <tr>
-                                    <td>2 ΤΕΚΝΑ</td>
-                                    <td>16%</td>
-                                </tr>
-                                <tr>
-                                    <td>3 ΤΕΚΝΑ</td>
-                                    <td>9%</td>
-                                </tr>
-                                <tr>
-                                    <td>4 ΤΕΚΝΑ</td>
-                                    <td>0%</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <h4 style="margin-top: 1rem;">Φόρος ανά Αριθμό Τέκνων</h4>
+                        <div class="mobile-scroll-container">
+                            <table class="children-tax-table">
+                                <thead>
+                                    <tr>
+                                        <th>Αριθμός Τέκνων</th>
+                                        <th>Φορολογικός Συντελεστής</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0 ΤΕΚΝΑ</td>
+                                        <td>20%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 ΤΕΚΝΟ</td>
+                                        <td>18%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2 ΤΕΚΝΑ</td>
+                                        <td>16%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3 ΤΕΚΝΑ</td>
+                                        <td>9%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4 ΤΕΚΝΑ</td>
+                                        <td>0%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
                         <div class="result" style="margin-top: 1rem;">
                             <p><strong>ΦΜΥ Υπολογίζεται με 2 τρόπους:</strong></p>
@@ -1640,59 +1916,61 @@
                     <div class="salary-calculations">
                         <h4>ΥΠΟΛΟΓΙΣΜΟΣ ΩΡΟΜΙΣΘΙΩΝ</h4>
                         
-                        <table class="salary-table">
-                            <thead>
-                                <tr>
-                                    <th>ΕΙΔΟΣ</th>
-                                    <th>ΤΥΠΟΣ ΥΠΟΛΟΓΙΣΜΟΥ</th>
-                                    <th>ΩΡΟΜΙΣΘΙΟ (€)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>ΩΡΟΜΙΣΘΙΟ</strong></td>
-                                    <td>1/280 του κλιμακίου</td>
-                                    <td id="hourlyRate">3.42</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΥΠΕΡΩΡΙΑΚΗ ΜΕΧΡΙ 22:00</strong></td>
-                                    <td>Ωρομίσθιο</td>
-                                    <td id="overtimeUntil22">3.42</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΑΠΌ 22:00 ΜΕΧΡΙ 6:00</strong></td>
-                                    <td>Ωρομίσθιο + 30%</td>
-                                    <td id="overtime22to6">4.45</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΠΕΡΑΝ ΚΥΡΙΑΚΗ ΚΑΙ ΕΞΑΙΡΕΣΙΜΕΣ 6:00-22:00</strong></td>
-                                    <td>Ωρομίσθιο + 40%</td>
-                                    <td id="sunday6to22">4.79</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΠΕΡΑΝ ΚΥΡΙΑΚΗ ΑΠΟ 22:00 ΕΩΣ 6:00</strong></td>
-                                    <td>Ωρομίσθιο + 45%</td>
-                                    <td id="sunday22to6">4.96</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΝΥΧΤΕΡΙΝΗ ΕΡΓΑΣΙΑ 22:00-6:00</strong></td>
-                                    <td>60% του Ωρομισθίου</td>
-                                    <td id="nightWork">2.05</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΚΥΡΙΑΚΕΣ ΚΑΙ ΕΞΑΙΡΕΣΙΜΕΣ</strong></td>
-                                    <td>75% του Ωρομισθίου</td>
-                                    <td id="sundayHoliday">2.57</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ΠΕΡΑΝ ΠΕΝΘΗΜΕΡΟΥ (ΣΑΒΒΑΤΑ)</strong></td>
-                                    <td>Ωρομίσθιο + 25%</td>
-                                    <td id="saturday">4.28</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="mobile-scroll-container">
+                            <table class="salary-table">
+                                <thead>
+                                    <tr>
+                                        <th>ΕΙΔΟΣ</th>
+                                        <th>ΤΥΠΟΣ ΥΠΟΛΟΓΙΣΜΟΥ</th>
+                                        <th>ΩΡΟΜΙΣΘΙΟ (€)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>ΩΡΟΜΙΣΘΙΟ</strong></td>
+                                        <td>1/280 του κλιμακίου</td>
+                                        <td id="hourlyRate">3.42</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΥΠΕΡΩΡΙΑΚΗ ΜΕΧΡΙ 22:00</strong></td>
+                                        <td>Ωρομίσθιο</td>
+                                        <td id="overtimeUntil22">3.42</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΑΠΌ 22:00 ΜΕΧΡΙ 6:00</strong></td>
+                                        <td>Ωρομίσθιο + 30%</td>
+                                        <td id="overtime22to6">4.45</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΠΕΡΑΝ ΚΥΡΙΑΚΗ ΚΑΙ ΕΞΑΙΡΕΣΙΜΕΣ 6:00-22:00</strong></td>
+                                        <td>Ωρομίσθιο + 40%</td>
+                                        <td id="sunday6to22">4.79</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΠΕΡΑΝ ΚΥΡΙΑΚΗ ΑΠΟ 22:00 ΕΩΣ 6:00</strong></td>
+                                        <td>Ωρομίσθιο + 45%</td>
+                                        <td id="sunday22to6">4.96</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΝΥΧΤΕΡΙΝΗ ΕΡΓΑΣΙΑ 22:00-6:00</strong></td>
+                                        <td>60% του Ωρομισθίου</td>
+                                        <td id="nightWork">2.05</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΚΥΡΙΑΚΕΣ ΚΑΙ ΕΞΑΙΡΕΣΙΜΕΣ</strong></td>
+                                        <td>75% του Ωρομισθίου</td>
+                                        <td id="sundayHoliday">2.57</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ΠΕΡΑΝ ΠΕΝΘΗΜΕΡΟΥ (ΣΑΒΒΑΤΑ)</strong></td>
+                                        <td>Ωρομίσθιο + 25%</td>
+                                        <td id="saturday">4.28</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         
-                        <div class="result" style="margin-top: 1.5rem;">
+                        <div class="result" style="margin-top: 1rem;">
                             <h4>ΣΥΝΤΟΜΟΙ ΤΥΠΟΙ</h4>
                             <p><strong>ΩΡΟΜΙΣΘΙΟ</strong> = Κλιμάκιο ÷ 280</p>
                             <p><strong>ΥΠΕΡΩΡΙΑΚΗ ΜΕΧΡΙ 22:00</strong> = Ωρομίσθιο</p>
@@ -1707,7 +1985,7 @@
                 </div>
                 
                 <!-- Νέα ενότητα για μισθοί -->
-                <div class="supplementary-section" style="margin-top: 2rem;">
+                <div class="supplementary-section" style="margin-top: 1.5rem;">
                     <h3>ΜΙΣΘΟΙ</h3>
                     
                     <div class="salary-grid">
@@ -1724,7 +2002,7 @@
                                 <input type="number" id="idsynValue" value="100" step="1" onchange="saveUserValues()">
                             </div>
                             
-                            <h5 style="margin-top: 1.5rem; margin-bottom: 1rem;">ΕΠΙΔΟΜΑΤΑ ΤΕΚΝΩΝ</h5>
+                            <h5 style="margin-top: 1rem; margin-bottom: 0.75rem;">ΕΠΙΔΟΜΑΤΑ ΤΕΚΝΩΝ</h5>
                             
                             <div class="form-group">
                                 <label for="tekn1Value">ΤΕΚΝ1 (€):</label>
@@ -1759,38 +2037,40 @@
                                 <p style="margin-top: 0.5rem;">Μπορείτε να αλλάξετε οποιαδήποτε τιμή και θα αποθηκευτεί αυτόματα.</p>
                             </div>
                             
-                            <div class="example-section" style="margin-top: 1.5rem;">
+                            <div class="example-section" style="margin-top: 1rem;">
                                 <h4>Τρέχουσες Τιμές</h4>
-                                <table class="deductions-table">
-                                    <tr>
-                                        <td><strong>ΕΠΑΝΘ</strong></td>
-                                        <td id="currentEpanth">150€</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>ΙΔΣΥΝ</strong></td>
-                                        <td id="currentIdsyn">100€</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>ΤΕΚΝ1</strong></td>
-                                        <td id="currentTekn1">70€</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>ΤΕΚΝ2</strong></td>
-                                        <td id="currentTekn2">120€</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>ΤΕΚΝ3</strong></td>
-                                        <td id="currentTekn3">170€</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>ΤΕΚΝ4</strong></td>
-                                        <td id="currentTekn4">220€</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>ΤΕΚΝ5</strong></td>
-                                        <td id="currentTekn5">290€</td>
-                                    </tr>
-                                </table>
+                                <div class="mobile-scroll-container">
+                                    <table class="deductions-table">
+                                        <tr>
+                                            <td><strong>ΕΠΑΝΘ</strong></td>
+                                            <td id="currentEpanth">150€</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>ΙΔΣΥΝ</strong></td>
+                                            <td id="currentIdsyn">100€</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>ΤΕΚΝ1</strong></td>
+                                            <td id="currentTekn1">70€</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>ΤΕΚΝ2</strong></td>
+                                            <td id="currentTekn2">120€</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>ΤΕΚΝ3</strong></td>
+                                            <td id="currentTekn3">170€</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>ΤΕΚΝ4</strong></td>
+                                            <td id="currentTekn4">220€</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>ΤΕΚΝ5</strong></td>
+                                            <td id="currentTekn5">290€</td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1812,33 +2092,35 @@
                 <div class="weekly-section-title">ΠΑΡΑΔΕΙΓΜΑΤΑ ΥΠΟΛΟΓΙΣΜΟΥ ΤΩΝ ΗΜΕΡΩΝ ΑΔΕΙΑΣ ΣΕ ΕΒΔΟΜΑΔΙΑΙΑ ΒΑΣΗ</div>
                 
                 <!-- Πίνακας 1 -->
-                <table class="weekly-time-table">
-                    <tr class="header-row">
-                        <th>ΔΕΥΤΕΡΑ</th>
-                        <th>ΤΡΙΤΗ</th>
-                        <th>ΤΕΤΑΡΤΗ</th>
-                        <th>ΠΕΜΠΤΗ</th>
-                        <th>ΠΑΡΑΣΚΕΥΗ</th>
-                        <th>ΣΑΒΒΑΤΟ</th>
-                        <th>ΚΥΡΙΑΚΗ</th>
-                        <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
-                        <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
-                    </tr>
-                    <tr>
-                        <td class="important">ΚΑΝ. ΑΔΕΙΑ</td>
-                        <td class="important">ΒΡΑΧ.ΑΔΕΙΑ</td>
-                        <td class="important">ΑΝΑΡ.ΑΔΕΙΑ</td>
-                        <td class="highlight">ΠΡΩΙ</td>
-                        <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
-                        <td class="highlight">ΝΥΧΤΑ</td>
-                        <td>ΑΔΙΑΘΕΤΟ</td>
-                        <td class="calculation">25,5</td>
-                        <td class="calculation">19,4</td>
-                    </tr>
-                    <tr>
-                        <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 25,5-19,4=6,1 ΩΡΕΣ</td>
-                    </tr>
-                </table>
+                <div class="mobile-scroll-container">
+                    <table class="weekly-time-table">
+                        <tr class="header-row">
+                            <th>ΔΕΥΤΕΡΑ</th>
+                            <th>ΤΡΙΤΗ</th>
+                            <th>ΤΕΤΑΡΤΗ</th>
+                            <th>ΠΕΜΠΤΗ</th>
+                            <th>ΠΑΡΑΣΚΕΥΗ</th>
+                            <th>ΣΑΒΒΑΤΟ</th>
+                            <th>ΚΥΡΙΑΚΗ</th>
+                            <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
+                            <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
+                        </tr>
+                        <tr>
+                            <td class="important">ΚΑΝ. ΑΔΕΙΑ</td>
+                            <td class="important">ΒΡΑΧ.ΑΔΕΙΑ</td>
+                            <td class="important">ΑΝΑΡ.ΑΔΕΙΑ</td>
+                            <td class="highlight">ΠΡΩΙ</td>
+                            <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
+                            <td class="highlight">ΝΥΧΤΑ</td>
+                            <td>ΑΔΙΑΘΕΤΟ</td>
+                            <td class="calculation">25,5</td>
+                            <td class="calculation">19,4</td>
+                        </tr>
+                        <tr>
+                            <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 25,5-19,4=6,1 ΩΡΕΣ</td>
+                        </tr>
+                    </table>
+                </div>
                 
                 <p class="formula">* ΟΙ ΥΠΟΧΡΕΩΤΙΚΕΣ ΩΡΕΣ ΒΡΙΣΚΟΝΤΑΙ ΜΕ ΤΟΝ ΠΑΡΑΚΑΤΩ ΤΡΟΠΟ:</p>
                 <p class="formula">ΑΦΑΙΡΟΥΜΕ ΤΙΣ 3 ΜΕΡΕΣ ΑΔΕΙΑΣ (ΚΑΝΟΝΙΚΗ,ΒΡΑΧΕΙΑ,ΑΝΑΡΡΩΤΙΚΗ) ΑΠΌ ΤΙΣ 7 ΜΕΡΕΣ ΤΗΣ ΕΒΔΟΜΑΔΑΣ ΚΑΙ</p>
@@ -1850,126 +2132,134 @@
                 <p class="result">Ο ΥΠΑΛΛΗΛΟΣ ΕΡΓΑΣΤΗΚΕ 3Χ8,5=25,5 ΩΡΕΣ ΑΡΑ Η ΥΠΗΡΕΣΙΑ ΤΟΥ ΩΦΕΙΛΕΙ 25,5-19,4=6,1 ΩΡΕΣ</p>
                 
                 <!-- Πίνακας 2 -->
-                <table class="weekly-time-table">
-                    <tr class="header-row">
-                        <th>ΔΕΥΤΕΡΑ</th>
-                        <th>ΤΡΙΤΗ</th>
-                        <th>ΤΕΤΑΡΤΗ</th>
-                        <th>ΠΕΜΠΤΗ</th>
-                        <th>ΠΑΡΑΣΚΕΥΗ</th>
-                        <th>ΣΑΒΒΑΤΟ</th>
-                        <th>ΚΥΡΙΑΚΗ</th>
-                        <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
-                        <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
-                    </tr>
-                    <tr>
-                        <td class="important">ΦΟΙΤ. ΑΔΕΙΑ</td>
-                        <td class="important">ΦΟΙΤ. ΑΔΕΙΑ</td>
-                        <td class="important">ΦΟΙΤ. ΑΔΕΙΑ</td>
-                        <td class="highlight">ΠΡΩΙ</td>
-                        <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
-                        <td class="highlight">ΝΥΧΤΑ</td>
-                        <td>ΑΔΙΑΘΕΤΟ</td>
-                        <td class="calculation">45,9</td>
-                        <td class="calculation">34</td>
-                    </tr>
-                    <tr>
-                        <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 45,9-34=11,9 ΩΡΕΣ</td>
-                    </tr>
-                </table>
+                <div class="mobile-scroll-container">
+                    <table class="weekly-time-table">
+                        <tr class="header-row">
+                            <th>ΔΕΥΤΕΡΑ</th>
+                            <th>ΤΡΙΤΗ</th>
+                            <th>ΤΕΤΑΡΤΗ</th>
+                            <th>ΠΕΜΠΤΗ</th>
+                            <th>ΠΑΡΑΣΚΕΥΗ</th>
+                            <th>ΣΑΒΒΑΤΟ</th>
+                            <th>ΚΥΡΙΑΚΗ</th>
+                            <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
+                            <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
+                        </tr>
+                        <tr>
+                            <td class="important">ΦΟΙΤ. ΑΔΕΙΑ</td>
+                            <td class="important">ΦΟΙΤ. ΑΔΕΙΑ</td>
+                            <td class="important">ΦΟΙΤ. ΑΔΕΙΑ</td>
+                            <td class="highlight">ΠΡΩΙ</td>
+                            <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
+                            <td class="highlight">ΝΥΧΤΑ</td>
+                            <td>ΑΔΙΑΘΕΤΟ</td>
+                            <td class="calculation">45,9</td>
+                            <td class="calculation">34</td>
+                        </tr>
+                        <tr>
+                            <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 45,9-34=11,9 ΩΡΕΣ</td>
+                        </tr>
+                    </table>
+                </div>
                 
                 <p class="result">Ο ΥΠΑΛΛΗΛΟΣ ΕΡΓΑΣΤΗΚΕ (3Χ6,8)+(3Χ8,5)=45,9 Η ΥΠΟΧΡΕΩΣΗ ΤΟΥ ΗΤΑΝ 34 ΩΡΕΣ</p>
                 <p class="result">ΔΟΥΛΕΨΕ 11,9 ΩΡΕΣ ΠΕΡΑ ΤΟΥ ΥΠΟΧΡΕΩΤΙΚΟΥ ΔΗΛΑΔΗ ΤΟΥ ΩΦΕΙΛΕΤΑΙ ΈΝΑ ΡΕΠΟ ΚΑΙ 3 ΩΡΕΣ</p>
                 
                 <!-- Πίνακας 3 -->
-                <table class="weekly-time-table">
-                    <tr class="header-row">
-                        <th>ΔΕΥΤΕΡΑ</th>
-                        <th>ΤΡΙΤΗ</th>
-                        <th>ΤΕΤΑΡΤΗ</th>
-                        <th>ΠΕΜΠΤΗ</th>
-                        <th>ΠΑΡΑΣΚΕΥΗ</th>
-                        <th>ΣΑΒΒΑΤΟ</th>
-                        <th>ΚΥΡΙΑΚΗ</th>
-                        <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
-                        <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
-                    </tr>
-                    <tr>
-                        <td class="important">ΑΔ. ΓΑΜΟΥ</td>
-                        <td class="important">ΑΔ. ΓΑΜΟΥ</td>
-                        <td class="important">ΑΔ. ΓΑΜΟΥ</td>
-                        <td class="important">ΑΔ. ΓΑΜΟΥ</td>
-                        <td class="important">ΑΔ. ΓΑΜΟΥ</td>
-                        <td class="highlight">ΡΕΠΟ</td>
-                        <td class="highlight">ΡΕΠΟ</td>
-                        <td class="calculation">34</td>
-                        <td class="calculation">34</td>
-                    </tr>
-                    <tr>
-                        <td colspan="9" class="result">Ο ΥΠΑΛΛΗΛΟΣ ΕΧΕΙ ΚΑΛΥΨΗ ΤΗΝ ΥΠΟΧΡΕΩΣΗ ΤΟΥ</td>
-                    </tr>
-                </table>
+                <div class="mobile-scroll-container">
+                    <table class="weekly-time-table">
+                        <tr class="header-row">
+                            <th>ΔΕΥΤΕΡΑ</th>
+                            <th>ΤΡΙΤΗ</th>
+                            <th>ΤΕΤΑΡΤΗ</th>
+                            <th>ΠΕΜΠΤΗ</th>
+                            <th>ΠΑΡΑΣΚΕΥΗ</th>
+                            <th>ΣΑΒΒΑΤΟ</th>
+                            <th>ΚΥΡΙΑΚΗ</th>
+                            <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
+                            <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
+                        </tr>
+                        <tr>
+                            <td class="important">ΑΔ. ΓΑΜΟΥ</td>
+                            <td class="important">ΑΔ. ΓΑΜΟΥ</td>
+                            <td class="important">ΑΔ. ΓΑΜΟΥ</td>
+                            <td class="important">ΑΔ. ΓΑΜΟΥ</td>
+                            <td class="important">ΑΔ. ΓΑΜΟΥ</td>
+                            <td class="highlight">ΡΕΠΟ</td>
+                            <td class="highlight">ΡΕΠΟ</td>
+                            <td class="calculation">34</td>
+                            <td class="calculation">34</td>
+                        </tr>
+                        <tr>
+                            <td colspan="9" class="result">Ο ΥΠΑΛΛΗΛΟΣ ΕΧΕΙ ΚΑΛΥΨΗ ΤΗΝ ΥΠΟΧΡΕΩΣΗ ΤΟΥ</td>
+                        </tr>
+                    </table>
+                </div>
                 
                 <!-- Πίνακας 4 -->
-                <table class="weekly-time-table">
-                    <tr class="header-row">
-                        <th>ΔΕΥΤΕΡΑ</th>
-                        <th>ΤΡΙΤΗ</th>
-                        <th>ΤΕΤΑΡΤΗ</th>
-                        <th>ΠΕΜΠΤΗ</th>
-                        <th>ΠΑΡΑΣΚΕΥΗ</th>
-                        <th>ΣΑΒΒΑΤΟ</th>
-                        <th>ΚΥΡΙΑΚΗ</th>
-                        <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
-                        <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
-                    </tr>
-                    <tr>
-                        <td class="highlight">ΡΕΠΟ</td>
-                        <td class="highlight">ΡΕΠΟ</td>
-                        <td class="important">ΑΙΜ. ΑΔΕΙΑ</td>
-                        <td class="important">ΑΙΜ. ΑΔΕΙΑ</td>
-                        <td class="important">ΑΙΜ. ΑΔΕΙΑ</td>
-                        <td class="highlight">ΠΡΩΙ</td>
-                        <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
-                        <td class="calculation">37,4</td>
-                        <td class="calculation">34</td>
-                    </tr>
-                    <tr>
-                        <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 37,4-34=3,4 ΩΡΕΣ</td>
-                    </tr>
-                </table>
+                <div class="mobile-scroll-container">
+                    <table class="weekly-time-table">
+                        <tr class="header-row">
+                            <th>ΔΕΥΤΕΡΑ</th>
+                            <th>ΤΡΙΤΗ</th>
+                            <th>ΤΕΤΑΡΤΗ</th>
+                            <th>ΠΕΜΠΤΗ</th>
+                            <th>ΠΑΡΑΣΚΕΥΗ</th>
+                            <th>ΣΑΒΒΑΤΟ</th>
+                            <th>ΚΥΡΙΑΚΗ</th>
+                            <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
+                            <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
+                        </tr>
+                        <tr>
+                            <td class="highlight">ΡΕΠΟ</td>
+                            <td class="highlight">ΡΕΠΟ</td>
+                            <td class="important">ΑΙΜ. ΑΔΕΙΑ</td>
+                            <td class="important">ΑΙΜ. ΑΔΕΙΑ</td>
+                            <td class="important">ΑΙΜ. ΑΔΕΙΑ</td>
+                            <td class="highlight">ΠΡΩΙ</td>
+                            <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
+                            <td class="calculation">37,4</td>
+                            <td class="calculation">34</td>
+                        </tr>
+                        <tr>
+                            <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 37,4-34=3,4 ΩΡΕΣ</td>
+                        </tr>
+                    </table>
+                </div>
                 
                 <p class="result">Ο ΥΠΑΛΛΗΛΟΣ ΕΡΓΑΣΤΗΚΕ (3Χ6,8)+(2Χ8,5)=37,4 Η ΥΠΟΧΡΕΩΣΗ ΤΟΥ ΗΤΑΝ 34 ΩΡΕΣ</p>
                 <p class="result">Η ΥΠΗΡΕΣΙΑ ΤΟΥ ΩΦΕΙΛΕΙ 37,4-34=3,4 ΩΡΕΣ</p>
                 
                 <!-- Πίνακας 5 -->
-                <table class="weekly-time-table">
-                    <tr class="header-row">
-                        <th>ΔΕΥΤΕΡΑ</th>
-                        <th>ΤΡΙΤΗ</th>
-                        <th>ΤΕΤΑΡΤΗ</th>
-                        <th>ΠΕΜΠΤΗ</th>
-                        <th>ΠΑΡΑΣΚΕΥΗ</th>
-                        <th>ΣΑΒΒΑΤΟ</th>
-                        <th>ΚΥΡΙΑΚΗ</th>
-                        <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
-                        <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
-                    </tr>
-                    <tr>
-                        <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
-                        <td class="highlight">ΠΡΩΙ</td>
-                        <td class="highlight">ΝΥΧΤΑ</td>
-                        <td>ΑΔΙΑΘΕΤΟ</td>
-                        <td class="highlight">ΡΕΠΟ</td>
-                        <td class="important">ΩΦΕΙΛΟΜΕΝΟ ΡΕΠΟ*</td>
-                        <td class="highlight">ΠΡΩΙ</td>
-                        <td class="calculation">42,5</td>
-                        <td class="calculation">34</td>
-                    </tr>
-                    <tr>
-                        <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 42,5-34=8,5 ΩΡΕΣ</td>
-                    </tr>
-                </table>
+                <div class="mobile-scroll-container">
+                    <table class="weekly-time-table">
+                        <tr class="header-row">
+                            <th>ΔΕΥΤΕΡΑ</th>
+                            <th>ΤΡΙΤΗ</th>
+                            <th>ΤΕΤΑΡΤΗ</th>
+                            <th>ΠΕΜΠΤΗ</th>
+                            <th>ΠΑΡΑΣΚΕΥΗ</th>
+                            <th>ΣΑΒΒΑΤΟ</th>
+                            <th>ΚΥΡΙΑΚΗ</th>
+                            <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
+                            <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
+                        </tr>
+                        <tr>
+                            <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
+                            <td class="highlight">ΠΡΩΙ</td>
+                            <td class="highlight">ΝΥΧΤΑ</td>
+                            <td>ΑΔΙΑΘΕΤΟ</td>
+                            <td class="highlight">ΡΕΠΟ</td>
+                            <td class="important">ΩΦΕΙΛΟΜΕΝΟ ΡΕΠΟ*</td>
+                            <td class="highlight">ΠΡΩΙ</td>
+                            <td class="calculation">42,5</td>
+                            <td class="calculation">34</td>
+                        </tr>
+                        <tr>
+                            <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 42,5-34=8,5 ΩΡΕΣ</td>
+                        </tr>
+                    </table>
+                </div>
                 
                 <p class="important">*ΤΟ ΩΦΕΙΛΟΜΕΝΟ ΡΕΠΟ Ή ΧΡΩΣΤΟΥΜΕΝΟ ΕΑΝ ΧΟΡΗΓΗΘΕΙ ΩΣ ΗΜΕΡΑ ΑΝΑΠΑΥΣΗΣ ΣΤΟ ΕΠΟΜΕΝΟ ΧΡΟΝΙΚΟ ΔΙΑΣΤΗΜΑ, ΥΠΟΛΟΓΙΖΕΤΑΙ ΣΕ 8,5 ΩΡΕΣ</p>
                 
@@ -1977,33 +2267,35 @@
                 <p class="result">Η ΥΠΗΡΕΣΙΑ ΤΟΥ ΩΦΕΙΛΕΙ 42,5-34=8,5 ΩΡΕΣ, ΔΗΛΑΔΗ ΕΝΑ ΡΕΠΟ ΑΚΡΙΒΩΣ</p>
                 
                 <!-- Πίνακας 6 -->
-                <table class="weekly-time-table">
-                    <tr class="header-row">
-                        <th>ΔΕΥΤΕΡΑ</th>
-                        <th>ΤΡΙΤΗ</th>
-                        <th>ΤΕΤΑΡΤΗ</th>
-                        <th>ΠΕΜΠΤΗ</th>
-                        <th>ΠΑΡΑΣΚΕΥΗ</th>
-                        <th>ΣΑΒΒΑΤΟ</th>
-                        <th>ΚΥΡΙΑΚΗ</th>
-                        <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
-                        <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
-                    </tr>
-                    <tr>
-                        <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
-                        <td class="highlight">ΠΡΩΙ</td>
-                        <td class="highlight">ΝΥΧΤΑ</td>
-                        <td>ΑΔΙΑΘΕΤΟ</td>
-                        <td class="important">ΣΥΝΔΙΚΑΛΙΣΤΙΚΗ ΑΔΕΙΑ*</td>
-                        <td class="important">ΣΥΝΔΙΚΑΛΙΣΤΙΚΗ ΑΔΕΙΑ*</td>
-                        <td class="highlight">ΡΕΠΟ</td>
-                        <td class="calculation">39,1</td>
-                        <td class="calculation">34</td>
-                    </tr>
-                    <tr>
-                        <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 39,1-34=5,4 ΩΡΕΣ</td>
-                    </tr>
-                </table>
+                <div class="mobile-scroll-container">
+                    <table class="weekly-time-table">
+                        <tr class="header-row">
+                            <th>ΔΕΥΤΕΡΑ</th>
+                            <th>ΤΡΙΤΗ</th>
+                            <th>ΤΕΤΑΡΤΗ</th>
+                            <th>ΠΕΜΠΤΗ</th>
+                            <th>ΠΑΡΑΣΚΕΥΗ</th>
+                            <th>ΣΑΒΒΑΤΟ</th>
+                            <th>ΚΥΡΙΑΚΗ</th>
+                            <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
+                            <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
+                        </tr>
+                        <tr>
+                            <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
+                            <td class="highlight">ΠΡΩΙ</td>
+                            <td class="highlight">ΝΥΧΤΑ</td>
+                            <td>ΑΔΙΑΘΕΤΟ</td>
+                            <td class="important">ΣΥΝΔΙΚΑΛΙΣΤΙΚΗ ΑΔΕΙΑ*</td>
+                            <td class="important">ΣΥΝΔΙΚΑΛΙΣΤΙΚΗ ΑΔΕΙΑ*</td>
+                            <td class="highlight">ΡΕΠΟ</td>
+                            <td class="calculation">39,1</td>
+                            <td class="calculation">34</td>
+                        </tr>
+                        <tr>
+                            <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 39,1-34=5,4 ΩΡΕΣ</td>
+                        </tr>
+                    </table>
+                </div>
                 
                 <p class="important">*Η ΣΥΝΔΙΚΑΛΙΣΤΙΚΗ ΑΔΕΙΑ ΥΠΟΛΟΓΙΖΕΤΑΙ ΜΕ 6,8 ΩΡΕΣ</p>
                 
@@ -2011,33 +2303,35 @@
                 <p class="result">Η ΥΠΗΡΕΣΙΑ ΤΟΥ ΩΦΕΙΛΕΙ 39,1-34=5,4 ΩΡΕΣ</p>
                 
                 <!-- Πίνακας 7 -->
-                <table class="weekly-time-table">
-                    <tr class="header-row">
-                        <th>ΔΕΥΤΕΡΑ</th>
-                        <th>ΤΡΙΤΗ</th>
-                        <th>ΤΕΤΑΡΤΗ ΑΡΓΙΑ</th>
-                        <th>ΠΕΜΠΤΗ</th>
-                        <th>ΠΑΡΑΣΚΕΥΗ</th>
-                        <th>ΣΑΒΒΑΤΟ</th>
-                        <th>ΚΥΡΙΑΚΗ</th>
-                        <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
-                        <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
-                    </tr>
-                    <tr>
-                        <td class="important">ΚΑΝ. ΑΔΕΙΑ</td>
-                        <td class="important">ΚΑΝ. ΑΔΕΙΑ</td>
-                        <td class="highlight">ΠΡΩΙ</td>
-                        <td class="important">ΕΙΔ. ΑΔΕΙΑ</td>
-                        <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
-                        <td class="highlight">ΝΥΧΤΑ</td>
-                        <td>ΑΔΙΑΘΕΤΟ</td>
-                        <td class="calculation">32,3</td>
-                        <td class="calculation">19,4</td>
-                    </tr>
-                    <tr>
-                        <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 32,3-19,4=12,9 ΩΡΕΣ</td>
-                    </tr>
-                </table>
+                <div class="mobile-scroll-container">
+                    <table class="weekly-time-table">
+                        <tr class="header-row">
+                            <th>ΔΕΥΤΕΡΑ</th>
+                            <th>ΤΡΙΤΗ</th>
+                            <th>ΤΕΤΑΡΤΗ ΑΡΓΙΑ</th>
+                            <th>ΠΕΜΠΤΗ</th>
+                            <th>ΠΑΡΑΣΚΕΥΗ</th>
+                            <th>ΣΑΒΒΑΤΟ</th>
+                            <th>ΚΥΡΙΑΚΗ</th>
+                            <th>ΣΥΝΟΛΟ ΩΡΩΝ</th>
+                            <th>ΥΠΟΧ/ΚΕΣ ΩΡΕΣ*</th>
+                        </tr>
+                        <tr>
+                            <td class="important">ΚΑΝ. ΑΔΕΙΑ</td>
+                            <td class="important">ΚΑΝ. ΑΔΕΙΑ</td>
+                            <td class="highlight">ΠΡΩΙ</td>
+                            <td class="important">ΕΙΔ. ΑΔΕΙΑ</td>
+                            <td class="highlight">ΑΠΟΓΕΥΜΑ</td>
+                            <td class="highlight">ΝΥΧΤΑ</td>
+                            <td>ΑΔΙΑΘΕΤΟ</td>
+                            <td class="calculation">32,3</td>
+                            <td class="calculation">19,4</td>
+                        </tr>
+                        <tr>
+                            <td colspan="9" class="result">Η ΥΠΗΡΕΣΙΑ ΩΦΕΙΛΕΙ 32,3-19,4=12,9 ΩΡΕΣ</td>
+                        </tr>
+                    </table>
+                </div>
                 
                 <p class="important">ΣΕ ΑΥΤΌ ΤΟ ΠΑΡΑΔΕΙΓΜΑ ΥΠΑΡΧΕΙ ΑΡΓΙΑ ΜΕΣΑ ΣΤΗ ΕΒΔΟΜΑΔΑ, Η ΟΠΟΙΑ ΥΠΟΛΟΓΙΖΕΤΑΙ ΣΕ 6,8 ΩΡΕΣ. ΔΗΛΑΔΗ ΑΠΌ ΤΙΣ 34 ΑΦΑΙΡΟΥΜΕ ΤΙΣ 6,8 ΩΡΕΣ ΤΗΣ ΑΡΓΙΑΣ. 34-6,8= 27,2. ΑΦΑΙΡΟΥΜΕ ΤΙΣ 2 ΜΕΡΕΣ ΚΑΝΟΝΙΚΗ ΑΔΕΙΑ( 7-2=5)</p>
                 
@@ -2097,20 +2391,22 @@
                         <div id="amortization-table-container" style="display: none;">
                             <h5>Πίνακας Αποπληρωμής (πρώτα 12 μήνες)</h5>
                             <div style="max-height: 400px; overflow-y: auto;">
-                                <table class="amortization-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Μήνας</th>
-                                            <th>Δόση</th>
-                                            <th>Τόκοι</th>
-                                            <th>Κεφάλαιο</th>
-                                            <th>Υπόλοιπο</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="amortization-body">
-                                        <!-- Amortization table will be filled by JavaScript -->
-                                    </tbody>
-                                </table>
+                                <div class="mobile-scroll-container">
+                                    <table class="amortization-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Μήνας</th>
+                                                <th>Δόση</th>
+                                                <th>Τόκοι</th>
+                                                <th>Κεφάλαιο</th>
+                                                <th>Υπόλοιπο</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="amortization-body">
+                                            <!-- Amortization table will be filled by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2182,6 +2478,8 @@
     </footer>
 
     <script>
+        // ΟΛΟΚΛΗΡΩΜΕΝΟΣ ΚΩΔΙΚΑΣ ΜΕ ΟΛΕΣ ΤΙΣ ΛΕΙΤΟΥΡΓΙΕΣ
+        // (Παραμένει ακριβώς ο ίδιος όπως στον αρχικό κώδικα)
         // =============================================
         // ΟΛΟΚΛΗΡΩΜΕΝΟΣ ΚΩΔΙΚΑΣ ΜΕ ΟΛΕΣ ΤΙΣ ΛΕΙΤΟΥΡΓΙΕΣ
         // =============================================
