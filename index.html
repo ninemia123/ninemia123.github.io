@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -235,6 +236,112 @@
             gap: 1rem;
             margin-bottom: 1rem;
         }
+/* Στυλ για ΟΔΗΓΙΕΣ/LINKS */
+.instructions-section {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.instructions-content {
+    line-height: 1.8;
+}
+
+.instructions-content h3 {
+    color: var(--primary-color);
+    margin: 1.5rem 0 1rem 0;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.instructions-content h4 {
+    color: var(--secondary-color);
+    margin: 1.2rem 0 0.8rem 0;
+}
+
+.instructions-content p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.instructions-content ul, .instructions-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.instructions-content li {
+    margin-bottom: 0.5rem;
+}
+
+.link-list {
+    background-color: rgba(44, 85, 48, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    border: 2px solid var(--primary-color);
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
+}
+
+.link-item:hover {
+    transform: translateX(5px);
+}
+
+.link-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    width: 40px;
+    text-align: center;
+}
+
+.link-text {
+    flex: 1;
+}
+
+.link-text strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.link-text a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.link-text a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .instructions-section {
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .link-list {
+        padding: 2rem;
+    }
+    
+    .link-item {
+        padding: 1.25rem;
+    }
+}
         /* ========== ΣΤΥΛ ΓΙΑ ΚΑΡΤΕΛΑ ΑΔΕΙΕΣ ========== */
         .vacation-section {
             background-color: var(--card-bg);
@@ -1266,8 +1373,10 @@
             <h2>Επιλέξτε Τύπο Υπολογισμού</h2>
             
             <div class="calculator-types mobile-scroll-container">
-                <button class="calc-type-btn active" data-calc="calendar">📅 ΗΜΕΡΟΛΟΓΙΟ</button>
-                <button class="calc-type-btn" data-calc="vacations">🏖️ ΑΔΕΙΕΣ</button> <!-- ΝΕΟ -->
+                <div class="calculator-types mobile-scroll-container">
+                <button class="calc-type-btn active" data-calc="instructions">📋 ΟΔΗΓΙΕΣ/LINKS</button>
+                <button class="calc-type-btn" data-calc="calendar">📅 ΗΜΕΡΟΛΟΓΙΟ</button>
+                <button class="calc-type-btn" data-calc="vacations">🏖️ ΑΔΕΙΕΣ</button>
                 <button class="calc-type-btn" data-calc="pensionable-earnings">📊 ΥΠΟΛ ΣΥΝΤΑΞΗΣ</button>
                 <button class="calc-type-btn" data-calc="pension">💰 ΚΥΡΙΑ ΣΥΝΤΑΞΗ</button>
                 <button class="calc-type-btn" data-calc="supplementary">🏦 ΕΠΙΚΟΥΡΙΚΗ</button>
@@ -1279,7 +1388,156 @@
                 <button class="calc-type-btn" data-calc="loan">🏠 ΔΑΝΕΙΟ</button>
                 <button class="calc-type-btn" data-calc="data-management">💾 ΔΕΔΟΜΕΝΑ</button>
             </div>
+<!-- ΟΔΗΓΙΕΣ/LINKS -->
+<div id="instructions-calc" class="calculator-form active">
+    <div class="instructions-section">
+        <h3>📋 Οδηγίες & Χρήσιμοι Σύνδεσμοι</h3>
+        
+        <div class="instructions-content">
+            <h4>ΒΑΣΙΚΕΣ ΟΔΗΓΙΕΣ ΧΡΗΣΗΣ</h4>
+            <p>Καλώς ορίσατε στο σύστημα διαχείρισης ΦΡΟΥΡΑ. Αυτό το εργαλείο σας βοηθά να διαχειριστείτε διάφορες πληροφορίες και υπολογισμούς σχετικά με τις αποδοχές, άδειες, συντάξεις και άλλες διοικητικές ανάγκες.</p>
+            
+            <h4>Πώς να χρησιμοποιήσετε το σύστημα:</h4>
+            <ul>
+                <li><strong>Επιλέξτε την καρτέλα</strong> που σας ενδιαφέρει από το πάνω μενού</li>
+                <li><strong>Συμπληρώστε τα απαιτούμενα δεδομένα</strong> στα πεδία εισαγωγής</li>
+                <li><strong>Πατήστε τα κουμπιά υπολογισμού</strong> για να δείτε τα αποτελέσματα</li>
+                <li><strong>Αποθηκεύστε τα δεδομένα σας</strong> χρησιμοποιώντας τη λειτουργία εξαγωγής</li>
+            </ul>
 
+            <H4>ΟΔΗΓΙΕΣ ΑΝΑΛΥΤΙΚΕΣ ΓΙΑ ΚΑΘΕ ΚΑΡΤΕΛΑ<H4>
+<h4>ΚΑΡΤΕΛΑ ΗΜΕΡΟΛΟΓΙΟ<h4>
+<P>Στην καρτελα ΗΜΕΡΟΛΟΓΙΟ ο συναδελφος μπορει να δημιουργσει μνος του βαρδιες ,ωρες βαρδιας,καθως και αντιτιμο κάθε ωρας. Το αντιτιμο μπορει να το παρει από την καρτελα ΜΙΣΘΟΛΟΓΙΟ, εκει πατωντας πανω στο κλιμακιο που είναι (βασικη προυποθεση πανω στο πλαισιοβασικος κλιμακιου να βρισκεται ο βασικος μισθος του κλιμακιου 1 ΔΕ) αυτοματα ΠΡΟΣΑΡΜΟΖΟΝΤΑΙ ΟΙ ΚΩΔΙΚΟΙ πλρημης στο μεικτο της ωρας πχ νυχτα,αργια,περαν. Από εκει δημιουργεις βαρδιες βαζεις το αντιτιμο Ετσι κάθε φορα που θα βαζεις βαρδια στο ημερολογιο κατω στους υπολογισμους αυτοματα θα δινονται οι μεικτες οι κρατησεςιαλλα και το καθαρο ποσο, Κάθε στιγμη θα γμωριζεις τι θα δικαιουσε σε μεικτο και καθαρο ποσο.<p>
+<h4>ΚΑΡΤΕΛΑ ΑΔΕΙΕΣ<h4>
+<p> Εχουμε βαλει τις πιο σημαντικες αδειες ,θα ενημερωσουμε εν καιρω με περισσοτερα στοιχεια<p>
+<h4>ΚΑΡΤΕΛΑ ΥΠΟΛΟΓΙΣΜΟΣ ΣΥΝΤΑΞΙΜΩΝ ΑΠΟΔΟΧΩΝ<h4>
+<p>Στην καρτελα την συγκεκριμενη υπαρχει στηλε με ετη από το 2002(επισημη εναρξη του ευρο) μεχρι το 2035, διπλα ο συναδελφος μεχρι να παρουμε από το γλκ τις συνταξιμες αποδοχες και να τις βαλουμε αυτοματα ,οποιος εχει τις δικες του μπορει να βαλει ανα ετος τις συνταξιμες.Ακριβες διπλα υπαρχει ο δεικτης τιμων καταναλωτη ΔΤΚ αυτοματο γινεται ανα ετος ο πολαπλασιασμος και το συνολο βγαινει κατω (Πιο διπλα εχουμε προνοησει οτα εφαρμοστει ο δεικτης μισθων που θα αντικαταστησει τοον ΔΤΚ εγκυκλιος μεχρι αυτην την ωρα που συντασονται οι οδηγιες δεν εχει βγει Μολις βγει να ενημερωσουμε τα πλαισια ώστε ο συναδελφοε να μην χρειαζεται να ασχοληθει)<p>
+<p>Εχουμε προνοησει οι ΔΤΚ εάν δεν αντικατασταθει να υπαρχει πλαισιο οπου και εμεις να μην εχουμε ενημερωσει να μπορει ο χρηστης να βαλει αυτές που πρεπει<p>
+<p>ΥΠΟΛΟΓΙΣΜΟΑ ΣΥΝΤΑΞΙΜΟΥ ΜΙΣΘΟΥ ο χρηστης επιλεγει ετος εξοδου διπλ ο ΔΜ είναι για μελλοντικη χρηση πρεπει να είναι 0 πατωντας υπολογισμο συντ μισθου μας βγαζει τις μηνιαιες συνταξιμες αποδοχες των ετων μας που από εκει θα βγει η κυρια κι όχι μονο.Πιο κατωβαζουμε τα ετη ασφαλισης από ολους τους φοεις και πλασματικα πχ37 και αυτοματα τοποθετειται το ποσοστ αναπληρωσης βαση των ετων ασφαλισης .υπαρχει τοποθετημενη η εθνικη συντακη αλλα εχουμε προνοησει ώστε σε κάθε αλλαγη ο χρηστης να μπορει να αλλαζει το ποσο πχ τωρα είναι 436 του χρονου παιρνει αυξηση η εθνικη και δεν εχουμε ενημερωσει την εφαρμογη.Ο συναδελφοε μπορει μονος του να αλλαξει το πλαισιο και να βαλει αυτό που πρεπει.ΟΙ ΣΥΝΤΑΞΙΜΕς ΑΠΟΔΟΧΕς ΕΙΝΑΙ ΥΠΟΛΟΓΙΣΜΕΝΕς ΜΕ ΑΦΑΙΡΕΣΕΙ 6% ΥΠΕΡ ΠΕΡΙΘΑΛΨΗς ,ΔΕΝ ΕΧΕΙ ΑΦΑΙΡΕΘΕΙ Ο ΦΟΡΟς .Μελλονιτικα θα τοποθετηθει τροπος ώστε ο συναδελφος να γνωριζει το καθαρο μετα φορου.<p>
+<h4>ΚΥΡΙΑ ΣΥΝΤΑΞΗ<h4>
+<p>Στην καρτελα εάν ξερουμε που μπορουμε και από την προηγουμενη καρτελα να βρουμε και όταν τμας δοθουν από γλκ θα τις βαζει αυτοματα το συστημα ,τις συνταξιμες αποδοχες από 2002 μεχρι την ημερα εξοδου τοτε στο ΔΜ δενβαζουμε τιποτα στον ΔΤΚ υπαρχει η τιμη 1,04 είναι ενας προχειρος μεσος ορος ετων είναι για δοκιμαστικους λογους η προηγουμενη καρτελα μας δινει με ακριβεια αυτό που πρεπει, οποτε βαζουμε μοναδα. Συμπληρωνουμε τα ετη από το 2002 μεχρι την ημερα εξοδου για να βγουν οι μηνιαιες συνταξιμες αποδοχες  αυτοματα συμπληρωνουμε ταχρονια ασφαλισης με τα πλασματικα κτλ πχ 37 αυτοματα μπαινει το ποσοστα αναπληρωσης και στην εθνικη όπως και στην προηγουμενη υπαρχει μια τιμη εάν αλλαξει μπορει ο χρηστης να παρεμβει και βγαινει η κυρια με κρατησεις υπερ περιθαλψης όχι με φορο όμως<p>
+<h4>ΕΠΙΚΟΥΡΙΚΗ<h4>
+<p>Εδώ εχουμε βαλει και τους δυο τροπους υπολογισμου ο συναδελφος δεν χρειαζεται αν ξερει τι είναι ραντα τι ποσοστο μπαινει στα προ 2014 , στο ένα κομματο βαζει τις συνταξιμες αποδοχες μεχρι το 2014 και τα ετη μεχρι τοτε και βγαζει αυτοματα το ποσος στα μετα 2014 βαζει τις εισφορες (θα τις παρουμε καποια στιγμη και θα το απλοποιησουμε) και την ηλικια εξοδου , η ραντα μπαινει αυτοματα και μας δειχνει την τελικη επικουρικη με αφαιρεση 6% όχι όμως φορο.(πολλα site εχω παρατηρησει χρησιμοποιουν μονο την πρωτη μεθοδο ανεξαρτητου ετων, εμεις εδώ εουμε ολες τις μεθοδους για πιο εωστη προσεγγιση και χρησηπερα της υπηρεσιας)<p>
+<h4>ΜΕΤΟΧΙΚΟ ΜΤΠΥ<H4>
+<P> Εδώ μπορουμε βαζοντας τις συνταξιμες αποδοχες που εχουμε βγαλει από τις προηγουμενες καρτελες (όχι την συνταξη, και θα πρεπει στις αποδοχες που εχουμε βγαλει να μετειχαν στις εισφορες στο μετοχικο αλλιως θα κανουμε υπολογισμο μονο με αυτές που μετειχαν.Θα γινει ενημερωση εάν παρατηρηθει κατι τετοιο ώστε αυτοματα να μπαινουν) Τα ετη που ειχαμε εισφορες στο ΜΤΠΥ και υπαρχει εκ του ΜΤΠΥ ο συντελεστης Εδώ είναι ο 0,215 αλλα μελλοντικα μπορει το ταμειο να ορισει αλλον και να μην εχουμε προλαβει να κανουμε ενημερωση Ο χρηστης μπορει να τοποθετησει τον ενο συντελεστη μονος του υπαρχει αυτή η δυνατοτητα.Το μερισμα είναι μηνιαιο που βγαινει είναι το μεικτο Το ΜΤΠΥ πληρωνει κάθε τρεις μηνες ως γνωστον<p>
+<h4>ΕΦΑΠΑΞ<h4>
+<p>Εδώ εχουμε δυο τμηματα το μεχρι 2014 και το μετα οπου επιστρεφονατι οι εισφορες <p>
+<h4> ΚΡΑΤΗΣΕΙ<H4>
+<P>Εδώ είναι ενημερωτικο να μπορει ο καθες συναδελφος να εχει εικονα τι του παρακρατουν από τον μισθο και γιατι Καθως και στις πλρηρωμες τις εκτακτες πχ νυχτερινα και εξαιρεσιμα.Καθαρα ενημερωτικο<p>
+<h4> ΜΙΣΘΟΛΟΓΙΟ<h4>
+<p>Εδώ για να μπορει να είναι λειτουργικο , και να μην χρειαζεται διαρκως παρεμβασεις από τους συναδελφους που θα το χειριζοναται , ο συναδελφος θα πρεπι να ξερει και να προσεχει ΜΟΝΟ ΕΝΑ ΠΛΑΙΣΙΟ το πλαισιο βασικος μισθος μισθος Εκει τοποθετουμε τον βασικο μισθο κλιμακιου 1 ΔΕ , ετσι αυτοματα ενημερωνονται όλα τα υπολοιπα κλιμακια ,τωρα πχ είναι 958 εάν μπει καποια αυξηση η ανακοινωθει και θελει καποιος να δει τι σημαινει αυτό το μονο που εχει να κανει νειναι να προσθεσει την αυξη στον τρεχων βασικο του πρωτου κλιμακιου δηλ 2025 είναι 958 ξερουμε Απριλιο 2026 θα παρουμε 35 ευρω Αρα ο ΒΜ1 θα γινει 993 Όταν το βαλουμε και πατησουμε καπου εξω αυτοματα αλλαζουν όλα τα κλιμακια και μαζι κι οι τιμες στους κωδικους πχ νυχτα αργια κτλ Εάν πατησουμε στο κλιμακιο το δικο μας θα δουμε τι θα περνουμς με την αυξηση στους αναλογους κβδικους πχ νυχτα, αργια Από κατω ενημερωτικα υπαρχουν μια σειρα επιδοματων οπου αριστερα ο χρηστης εχει την δυνατοτητα να παρεμβαινει και αυτοματα προσαρμοζονται οι τιμες δεξια .Ετσι σε μεικτο επιπεδο ξερει κι αν κανει χρηση της καρτελας κρατησεις θα ξερει και προ φορου . Και μπορει με μια αναγωγη να δει και μετα φορου υπαρχει στην καρτελα κρατησεις ο φορος για κάθε περιπτωση (μελλοντικα θα βαλουμα πραξεις να βγαινει αυτοματα)<p>
+<h4>ΕΒΔΟΜΑΔΙΑΙΟΣ<h4>
+<p>Εδώ είναι παραδειγματα για το πώς υπολογιζεται ο χρονος εργασις Καθαρα ενημερωτικο<p>
+<h4> ΔΑΝΕΙΟ<h4>
+<p>Ενας υπολογιστης τον τοκων και της δοσης <p>
+<h4>ΧΡΗΣΙΜΑ LINKS>
+
+
+        </div>
+
+        <div class="link-list">
+            <h4>🌐 Χρήσιμοι Σύνδεσμοι</h4>
+            
+            <div class="link-item">
+                <div class="link-icon">🏛️</div>
+                <div class="link-text">
+                    <strong>Υπουργείο Προστασίας του Πολίτη</strong>
+                    <a href="https://www.mopocp.gov.gr/" target="_blank">https://www.mopocp.gov.gr/</a>
+                </div>
+            </div>
+            
+            <div class="link-item">
+                <div class="link-icon">📊</div>
+                <div class="link-text">
+                    <strong>ΕΦΚΑ - Ενιαίο Ταμείο Κοινωνικής Ασφάλισης</strong>
+                    <a href="https://www.efka.gov.gr/" target="_blank">https://www.efka.gov.gr/</a>
+                </div>
+            </div>
+            
+            <div class="link-item">
+                <div class="link-icon">💼</div>
+                <div class="link-text">
+                    <strong>ΤΕΑΔΥ - Ταμείο Επικουρικής Ασφάλισης Δημοσίων Υπαλλήλων</strong>
+                    <a href="https://www.teady.gov.gr/" target="_blank">https://www.teady.gov.gr/</a>
+<div class="link-item">
+    <div class="link-icon">🔗</div>
+    <div class="link-text">
+        <strong> Gov συνταξιοδοτηση </strong>
+        <a href="https://www.gov.gr/ipiresies/ergasia-kai-asphalise/suntaxiodotese   " target="_blank">https://www.gov.gr/ipiresies/ergasia-kai-asphalise/suntaxiodotese   </a>
+    </div>
+</div>
+<div class="link-item">
+    <div class="link-icon">🔗</div>
+    <div class="link-text">
+        <strong>1555</strong>
+        <a href="https://webchannel.1555.gov.gr/main " target="_blank">https://webchannel.1555.gov.gr/main< /a>
+    </div>
+</div>
+<div class="link-item">
+    <div class="link-icon">🔗</div>
+    <div class="link-text">
+        <strong> ΔΙΑΥΓΕΙΑ ΑΝΑΖΗΤΗΣΗ ΑΠΟΓΑΣΕΩΝ </strong>
+        <a href="https://diavgeia.gov.gr/ " target="_blank">https://diavgeia.gov.gr/ </a>
+    </div>
+</div>
+<div class="link-item">
+    <div class="link-icon">🔗</div>
+    <div class="link-text">
+        <strong> ADDE </strong>
+        <a href="https://www1.aade.gr/aadeapps3/myaade/#!/" target="_blank">https://www1.aade.gr/aadeapps3/myaade/#!/</a>
+    </div>
+</div>
+<div class="link-item">
+    <div class="link-icon">🔗</div>
+    <div class="link-text">
+        <strong> gsis </strong>
+        <a href="https://www.gsis.gr/polites-epiheiriseis " target="_blank">https://www.gsis.gr/polites-epiheiriseis </a>
+    </div>
+</div>
+<div class="link-item">
+    <div class="link-icon">🔗</div>
+    <div class="link-text">
+        <strong> ΕΘΝΙΚΟ ΤΥΠΟΓΡΑΦΕΙΟ </strong>
+        <a href="> https://search.et.gr/el/advanced-search/" target="_blank">> https://search.et.gr/el/advanced-search/</a>
+    </div>
+</div>
+<div class="link-item">
+    <div class="link-icon">🔗</div>
+    <div class="link-text">
+        <strong> ΑΤΛΑΣ ΑΣΦΑΛΙΣΤΙΚΗ ΙΚΑΝΟΤΗΤΑ </strong>
+        <a href="https://www.atlas.gov.gr/Atlas/Pages/Home.aspx " target="_blank">https://www.atlas.gov.gr/Atlas/Pages/Home.aspx </a>
+    </div>
+</div>
+<div class="link-item">
+    <div class="link-icon">🔗</div>
+    <div class="link-text">
+        <strong> ΜΤΠΥ </strong>
+        <a href=">  https://mtpy.gr/" target="_blank">>  https://mtpy.gr/</a>
+    </div>
+</div>
+<div class="link-item">
+    <div class="link-icon">🔗</div>
+    <div class="link-text">
+        <strong> ΠΟΘΕΝΕΣΧΕΣ </strong>
+        <a href="https://www.pothen.gr/pothen-main/main/" target="_blank">https://www.pothen.gr/pothen-main/main/</a>
+    </div>
+</div>
+<div class="link-item">
+    <div class="link-icon">🔗</div>
+    <div class="link-text">
+        <strong>>  ΜΗΤΡΟΩ ΔΗΜΟΣΙΩΝ ΥΠΑΛΛΗΛΩΝ </strong>
+        <a href="> https://hrms.gov.gr/" target="_blank">> https://hrms.gov.gr/</a>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
             <!-- ΗΜΕΡΟΛΟΓΙΟ -->
             <div id="calendar-calc" class="calculator-form active">
                 <div class="calendar-section">
@@ -1395,6 +1653,7 @@
        <h4> α) Κανονική άδεια<h4> <p> 30 (+ 4 ημέρες πορείας) = 34 ημέρες άδειας συμπεριλαμβανομένων των Σαββάτων, Κυριακών και αργιών. α1. Όσο αφορά την κανονική άδεια , όσοι υπηρετούν στην εξωτερική φρουρά διέπονται από τον Κανονισμό Οργάνωσης και Λειτουργίας της Υπηρεσίας Εξωτερικής Φρούρησης Καταστημάτων Κράτησης ΠΔ 215/2006 , ο οποίος στο άρθρο 17 παρ 1. αναφέρει ότι δικαίωμα κανονικής άδειας εχουν οι εξωτερικοί φρουροί, μετά την συμπλήρωση ενός (1) έτους από το διορισμό τους . Οπότε οι νεοδιόριστοι εξωτερικοί φρουροί δεν έχουν δικαίωμα κανονικής άδειας μέχρι να κλείσουν ένα έτος από το διορισμό τους. Αν, για οποιοδήποτε λόγο, η παραπάνω άδεια δεν χορηγηθεί μέσα στο ημερολογιακό έτος, χορηγείται στο επόμενο ημερολογιακό έτος και έως το τέλος Μαρτίου, χρονολογία που πρέπει να διανυθεί.
 Σε κανονική άδεια μπορούν να βρίσκονται ταυτόχρονα φρουροί μέχρι το 1/4 του συνόλου κάθε υπηρεσίας.<p>
  <h4>β) Βραχεία άδεια<h4> <p>7 (+ 4 ημέρες πορείας) = 11 ημέρες άδειας συμπεριλαμβανομένων των Σαββάτων, Κυριακών και αργιών . β1. Όσο αφορά τις βραχείες άδειες , υπάρχει η δυνατότητα χορήγησης της ακόμα και σε νεοδιόριστους υπαλλήλους καθώς στο άρθρο 17 παρ 2 αναφέρει ότι ‘’ Σε εξαιρετικές περιπτώσεις, κατά την κρίση του αρμοδίου για την έγκριση της αδείας, μπορεί να χορηγείται και σε φρουρούς που δεν έχουν συμπληρώσει ένα έτος από το διορισμό τους’’<p>
+<h4>ΠΑΡΑΜΕΘΩΡΙΟΥ<H4><P> 4 Μερες<p>A
  <h4>γ) αναρρωτική άδεια <h4> <p>όσες ημέρες προβλέπονται από το Ν.3528/07 άρθρο 54 (δημοσιοϋπαλληλικός κώδικας). .  Στον υπάλληλο που είναι ασθενής ή χρειάζεται να αναρρώσει, χορηγείται αναρρωτική άδεια με αποδοχές τόσων μηνών όσα είναι τα έτη υπηρεσίας του , από την οποία αφαιρείται το σύνολο των αναρρωτικών αδειών που τυχών έχει λάβει μέσα στη προηγουμένη πενταετία. (δηλαδή εάν υπάλληλος έχει 6 έτη υπηρεσίας δικαιούται 6 μήνες αναρρωτική άδεια με αποδοχές , από τους οποίους 6 μήνες αφαιρούνται τυχών αναρρωτικές άδειες που έλαβε τα 5 τελευταία έτη. Εάν δηλαδή έλαβε τον πρώτο χρόνο υπηρεσίας του ένα μήνα άδεια και έκτοτε δεν έλαβε ξανά αναρρωτική άδεια, αυτός δεν αφαιρείται καθώς δεν τον έλαβε την τελευταία 5ετια και ως εκ τούτου μπορεί να λάβει 6 μήνες αναρρωτικής άδειας με αποδοχές) . Αναρρωτική άδεια χορηγούμενη χωρίς διακοπή δεν μπορεί να υπερβεί τους δώδεκα (12) μήνες. Χρόνος υπηρεσίας τουλάχιστον έξι (6) μηνών θεωρείται ως πλήρες έτος. Υπάλληλος, ο οποίος δεν έχει συμπληρώσει χρόνο υπηρεσίας έξι (6) μηνών, δικαιούται να λάβει τις βραχυχρόνιες αναρρωτικές άδειες που προβλέπονται. Μετά την εξάντληση τους, ο υπάλληλος δικαιούται άδεια άνευ αποδοχών. ( Βραχυχρόνιες αναρρωτικές άδειες χορηγούνται με γνωμάτευση θεράποντος ιατρού έως οκτώ (8) ημέρες κατ΄ έτος. Δύο (2) εξ αυτών, αλλά όχι συνεχόμενες, μπορούν να χορηγούνται μόνο με υπεύθυνη δήλωση του υπαλλήλου ). * Μετά την εξάντληση τους, ο υπάλληλος δικαιούται άδεια άνευ αποδοχών. γ3. Στην αναρρωτική άδεια συνυπολογίζονται και οι ημέρες απουσίας λόγω ασθενείας που προηγήθηκαν της άδειας. * Η αναρρωτική άδεια δηλώνεται στην υπηρεσία την ίδια ημέρα με την ασθένεια * Η υπηρεσία χορηγεί την αναρρωτική άδεια ύστερα από αίτηση του υπαλλήλου. Η αίτηση για αναρρωτική άδεια υποβάλλεται εντός επτά (7) ημερών από την απουσία του υπαλλήλου λόγω ασθενείας. Σε περίπτωση αδικαιολόγητης καθυστέρησης που δεν οφείλεται σε λόγους ανωτέρας βίας, γίνεται ανάλογη περικοπή της αναρρωτικής άδειας με ευθύνη του οργάνου που είναι αρμόδιο για την έκδοση της απόφασης χορήγησης της * Αναρρωτική άδεια πέραν των οκτώ (8) ημερών κατ΄ έτος χορηγείται ύστερα από γνωμάτευση της οικείας υγειονομικής επιτροπής, με εξαίρεση την περίπτωση που η άδεια χορηγείται βάσει γνωμάτευσης του διευθυντή κλινικής δημοσίου νοσοκομείου και εφόσον πρόκειται για νοσηλεία επτά (7) ημερών τουλάχιστο ή κατόπιν χειρουργικής επέμβασης. ( Περνάμε επιτροπή για άδειες πέραν των 8 ημέρων ). <p>
 <h4>δ) Άδεια Γάμου :<h4> <p> Οι υπάλληλοι έχουν δικαίωμα άδειας απουσίας με αποδοχές πέντε (5) εργάσιμων ημερών ( Ν.3528/2007 άρθρο 50 ) <p>
 <h4>ε) Άδεια θανάτου συγγενή:<h4> <p> Οι υπάλληλοι έχουν δικαίωμα άδειας τριών (3) εργάσιμων ημερών σε περίπτωση θανάτου συζύγου τους ή και συγγενούς έως και β’ βαθμού. ( Ν.3528/2007 άρθρο 50 )<p> 
@@ -2337,6 +2596,10 @@ https://www.opengov.gr/ypes/?p=8739<p>
                             <div class="form-group">
                                 <label for="tekn5Value">ΤΕΚΝ5 (€):</label>
                                 <input type="number" id="tekn5Value" value="290" step="1" onchange="saveUserValues()">
+                            <div class="form-group">
+                           <label for="parathrioValue">ΠΑΡ/ΘΡΙΟ (€):</label>
+                          <input type="number" id="parathrioValue" value="100" step="1" onchange="saveUserValues()">
+                          </div>
                             </div>
                         </div>
                         
@@ -2379,6 +2642,10 @@ https://www.opengov.gr/ypes/?p=8739<p>
                                             <td><strong>ΤΕΚΝ5</strong></td>
                                             <td id="currentTekn5">290€</td>
                                         </tr>
+                                         <tr>
+                                        <td><strong>ΠΑΡ/ΘΡΙΟ</strong></td>
+                                       <td id="currentParathrio">100€</td>
+                                       </tr>
                                     </table>
                                 </div>
                             </div>
@@ -3906,8 +4173,40 @@ https://www.opengov.gr/ypes/?p=8739<p>
                 updateCurrentValuesDisplay();
             }
         }
-
-        function updateCurrentValuesDisplay() {
+         function saveUserValues() {
+    const userValues = {
+        eparth: document.getElementById('epanthValue').value,
+        idsyn: document.getElementById('idsynValue').value,
+        tekn1: document.getElementById('tekn1Value').value,
+        tekn2: document.getElementById('tekn2Value').value,
+        tekn3: document.getElementById('tekn3Value').value,
+        tekn4: document.getElementById('tekn4Value').value,
+        tekn5: document.getElementById('tekn5Value').value,
+        parathrio: document.getElementById('parathrioValue').value, // 👈 ΠΡΟΣΘΗΚΗ ΑΥΤΗΣ ΤΗΣ ΓΡΑΜΜΗΣ
+        baseSalary: document.getElementById('baseSalary').value
+    };
+    localStorage.setItem('userSalaryValues', JSON.stringify(userValues));
+    updateCurrentValuesDisplay();
+}
+      function loadUserValues() {
+    const savedValues = localStorage.getItem('userSalaryValues');
+    if (savedValues) {
+        const userValues = JSON.parse(savedValues);
+        
+        if (userValues.eparth) document.getElementById('epanthValue').value = userValues.eparth;
+        if (userValues.idsyn) document.getElementById('idsynValue').value = userValues.idsyn;
+        if (userValues.tekn1) document.getElementById('tekn1Value').value = userValues.tekn1;
+        if (userValues.tekn2) document.getElementById('tekn2Value').value = userValues.tekn2;
+        if (userValues.tekn3) document.getElementById('tekn3Value').value = userValues.tekn3;
+        if (userValues.tekn4) document.getElementById('tekn4Value').value = userValues.tekn4;
+        if (userValues.tekn5) document.getElementById('tekn5Value').value = userValues.tekn5;
+        if (userValues.parathrio) document.getElementById('parathrioValue').value = userValues.parathrio; // 👈 ΠΡΟΣΘΗΚΗ ΑΥΤΗΣ ΤΗΣ ΓΡΑΜΜΗΣ
+        if (userValues.baseSalary) document.getElementById('baseSalary').value = userValues.baseSalary;
+        
+        updateCurrentValuesDisplay();
+    }
+} 
+     function updateCurrentValuesDisplay() {
             document.getElementById('currentEpanth').textContent = document.getElementById('epanthValue').value + '€';
             document.getElementById('currentIdsyn').textContent = document.getElementById('idsynValue').value + '€';
             document.getElementById('currentTekn1').textContent = document.getElementById('tekn1Value').value + '€';
@@ -3916,7 +4215,16 @@ https://www.opengov.gr/ypes/?p=8739<p>
             document.getElementById('currentTekn4').textContent = document.getElementById('tekn4Value').value + '€';
             document.getElementById('currentTekn5').textContent = document.getElementById('tekn5Value').value + '€';
         }
-
+function updateCurrentValuesDisplay() {
+    document.getElementById('currentEpanth').textContent = document.getElementById('epanthValue').value + '€';
+    document.getElementById('currentIdsyn').textContent = document.getElementById('idsynValue').value + '€';
+    document.getElementById('currentTekn1').textContent = document.getElementById('tekn1Value').value + '€';
+    document.getElementById('currentTekn2').textContent = document.getElementById('tekn2Value').value + '€';
+    document.getElementById('currentTekn3').textContent = document.getElementById('tekn3Value').value + '€';
+    document.getElementById('currentTekn4').textContent = document.getElementById('tekn4Value').value + '€';
+    document.getElementById('currentTekn5').textContent = document.getElementById('tekn5Value').value + '€';
+    document.getElementById('currentParathrio').textContent = document.getElementById('parathrioValue').value + '€'; // 👈 ΠΡΟΣΘΗΚΗ ΑΥΤΗΣ ΤΗΣ ΓΡΑΜΜΗΣ
+}
         function initializeSalaryScale() {
             const baseSalary = parseFloat(document.getElementById('baseSalary').value);
             salaryScale = [];
@@ -4231,4 +4539,5 @@ https://www.opengov.gr/ypes/?p=8739<p>
     </script>
 </body>
 </html>
+
 
