@@ -932,6 +932,18 @@
             border-radius: 5px;
             margin: 8px 0;
         }
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 80px;
+}
 
         /* Στυλ για διαχείριση δεδομένων */
         .data-management {
@@ -1535,10 +1547,8 @@
         </div>
     </div>
 </div>
-
-            
             <!-- ΗΜΕΡΟΛΟΓΙΟ -->
-            <div id="calendar-calc" class="calculator-form active">
+            <div id="calendar-calc" class="calculator-form">
                 <div class="calendar-section">
                     <h3>📅 Ημερολόγιο Βαρδιών</h3>
                     
@@ -1574,6 +1584,10 @@
                             <div class="form-group">
                                 <label for="shift-rate">Αντιτιμο ανά ώρα (€):</label>
                                 <input type="number" id="shift-rate" placeholder="Αφήστε κενό για προεπιλεγμένο" step="0.01" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="shift-comments">Σχόλια:</label>
+                                <textarea id="shift-comments" placeholder="Προσθέστε σχόλια για τη βάρδια..." rows="3"></textarea>
                             </div>
                             <button id="save-shift">💾 Αποθήκευση Βάρδιας</button>
                             <button id="delete-shift" style="background-color: #dc3545; display: none;">🗑️ Διαγραφή Βάρδιας</button>
@@ -1640,7 +1654,7 @@
                     </div>
                 </div>
             </div>
-<!-- ΑΔΕΙΕΣ -->
+            <!-- ΑΔΕΙΕΣ -->
 <div id="vacations-calc" class="calculator-form">
     <div class="vacation-section">
         <h3>🏖️ ΑΔΕΙΕΣ - Εξωτερικοί Φρουροί</h3>
@@ -3982,21 +3996,31 @@ https://www.opengov.gr/ypes/?p=8739<p>
                 const currentDateStr = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
                 const dayShifts = shifts.filter(shift => shift.date === currentDateStr);
                 
-                dayShifts.forEach(shift => {
-                    const shiftType = shiftTypes.find(t => t.id === shift.typeId);
-                    if (shiftType) {
-                        const shiftInfo = document.createElement('div');
-                        shiftInfo.className = 'shift-info';
-                        shiftInfo.style.backgroundColor = shiftType.color;
-                        shiftInfo.style.color = 'white';
-                        shiftInfo.textContent = `${shiftType.name} (${shift.hours}ώ)`;
-                        if (shift.rate > 0 && shiftType.showRate) {
-                            shiftInfo.textContent += ` ${shift.rate}€`;
-                        }
-                        dayElement.appendChild(shiftInfo);
-                    }
-                });
+                        dayShifts.forEach(shift => {
+            const shiftType = shiftTypes.find(t => t.id === shift.typeId);
+            if (shiftType) {
+                const shiftInfo = document.createElement('div');
+                shiftInfo.className = 'shift-info';
+                shiftInfo.style.backgroundColor = shiftType.color;
+                shiftInfo.style.color = 'white';
+                shiftInfo.textContent = `${shiftType.name} (${shift.hours}ώ)`;
+                if (shift.rate > 0 && shiftType.showRate) {
+                    shiftInfo.textContent += ` ${shift.rate}€`;
+                }
+                dayElement.appendChild(shiftInfo);
                 
+                // 👈 ΠΡΟΣΘΗΚΗ: Εμφάνιση εικονιδίου για σχόλια αν υπάρχουν
+                if (shift.comments && shift.comments.trim() !== '') {
+                    const commentIcon = document.createElement('div');
+                    commentIcon.className = 'comment-indicator';
+                    commentIcon.innerHTML = '💬';
+                    commentIcon.style.fontSize = '0.7rem';
+                    commentIcon.style.marginTop = '2px';
+                    commentIcon.title = shift.comments;
+                    dayElement.appendChild(commentIcon);
+                }
+            }
+        });                
                 dayElement.addEventListener('click', () => editShift(currentDateStr));
                 calendar.appendChild(dayElement);
             }
@@ -4022,6 +4046,7 @@ https://www.opengov.gr/ypes/?p=8739<p>
                 document.getElementById('shift-type').value = existingShift.typeId;
                 document.getElementById('shift-hours').value = existingShift.hours;
                 document.getElementById('shift-rate').value = existingShift.rate;
+                document.getElementById('shift-comments').value = existingShift.comments || ''; 
                 document.getElementById('delete-shift').style.display = 'block';
                 
                 if (existingShift.typeId === 'custom') {
@@ -4032,6 +4057,7 @@ https://www.opengov.gr/ypes/?p=8739<p>
             } else {
                 document.getElementById('shift-type').value = shiftTypes[0].id;
                 document.getElementById('shift-hours').value = '';
+                document.getElementById('shift-comments').value = ''; //
                 // Αυτόματη συμπλήρωση προεπιλεγμένου αντιτίμου
                 const selectedType = shiftTypes[0];
                 document.getElementById('shift-rate').value = selectedType.defaultRate || '';
@@ -4045,7 +4071,7 @@ https://www.opengov.gr/ypes/?p=8739<p>
             const typeValue = document.getElementById('shift-type').value;
             const hours = parseFloat(document.getElementById('shift-hours').value) || 0;
             const rate = parseFloat(document.getElementById('shift-rate').value) || 0;
-            
+            const comments = document.getElementById('shift-comments').value; // 
             if (!date) {
                 alert('Παρακαλώ επιλέξτε ημερομηνία');
                 return;
@@ -4070,13 +4096,12 @@ https://www.opengov.gr/ypes/?p=8739<p>
             const existingIndex = shifts.findIndex(shift => shift.date === date);
             
             if (existingIndex !== -1) {
-                // Ενημέρωση υπάρχουσας βάρδιας
-                shifts[existingIndex] = { date, typeId, hours: shiftHours, rate };
-            } else {
-                // Προσθήκη νέας βάρδιας
-                shifts.push({ date, typeId, hours: shiftHours, rate });
-            }
-            
+        // Ενημέρωση υπάρχουσας βάρδιας
+        shifts[existingIndex] = { date, typeId, hours: shiftHours, rate, comments }; // 👈 ΠΡΟΣΘΗΚΗ comments
+    } else {
+        // Προσθήκη νέας βάρδιας
+        shifts.push({ date, typeId, hours: shiftHours, rate, comments }); // 👈 ΠΡΟΣΘΗΚΗ comments
+    }            
             localStorage.setItem('shifts', JSON.stringify(shifts));
             updateCalendar();
             
@@ -4538,7 +4563,4 @@ function updateCurrentValuesDisplay() {
     </script>
 </body>
 </html>
-
-
-
 
