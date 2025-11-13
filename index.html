@@ -1371,7 +1371,48 @@ textarea {
                 right: 0.5rem;
             }
         }
-    </style>
+   /* Mobile Enhancements - Safe additions */
+@media (max-width: 768px) {
+    .calculator-types {
+        padding: 0.5rem;
+        gap: 0.25rem;
+    }
+    
+    .calc-type-btn {
+        min-width: 110px;
+        font-size: 0.8rem;
+        padding: 0.6rem 0.3rem;
+    }
+    
+    /* Better touch targets */
+    button, input[type="button"], input[type="submit"] {
+        min-height: 44px;
+    }
+    
+    /* Better table scrolling */
+    .mobile-scroll-container {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    
+    .mobile-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Improve form elements */
+    input, select, textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* Print improvements */
+@media print {
+    .calculator-types, .theme-toggle {
+        display: none !important;
+    }
+}
+
+ </style>
 </head>
 <body>
     <header>
@@ -1468,8 +1509,8 @@ textarea {
             <div class="link-item">
                 <div class="link-icon">💼</div>
                 <div class="link-text">
-                    <strong>1521 - 1521ΑΑΔΕ</strong>
-                    <a href="https://1521.aade.gr/" target="_blank">https://1521.aade.gr//</a>
+                    <strong>ΑΑΔΕ1521 - 1521ΑΑΔΕ</strong>
+                    <a href="https://1521.aade.gr/" target="_blank">https://1521.aade.gr/</a>
 <div class="link-item">
     <div class="link-icon">🔗</div>
     <div class="link-text">
@@ -1487,7 +1528,7 @@ textarea {
 <div class="link-item">
     <div class="link-icon">🔗</div>
     <div class="link-text">
-        <strong> ΔΙΑΥΓΕΙΑ ΑΝΑΖΗΤΗΣΗ ΑΠΟΦΑΣΕΩΝ </strong>
+        <strong> ΔΙΑΥΓΕΙΑ ΑΝΑΖΗΤΗΣΗ ΑΠΟΓΑΣΕΩΝ </strong>
         <a href="https://diavgeia.gov.gr/ " target="_blank">https://diavgeia.gov.gr/ </a>
     </div>
 </div>
@@ -4560,10 +4601,39 @@ function updateCurrentValuesDisplay() {
             };
             reader.readAsText(file);
         }
+   // Enhanced Mobile UX - Safe additions
+function enhanceMobileUX() {
+    // Better scrolling experience
+    document.querySelectorAll('.mobile-scroll-container').forEach(container => {
+        container.style.webkitOverflowScrolling = 'touch';
+    });
+    
+    // Better touch experience
+    document.querySelectorAll('button, .calc-type-btn, .scale-item').forEach(element => {
+        element.style.cursor = 'pointer';
+    });
+}
+
+// Update your initialization to include this
+function initializeSystem() {
+    initializeTheme();
+    initializeCalculatorTabs();
+    initializePercentageTable();
+    initializeRantaTable();
+    initializePensionableEarningsTable();
+    initializeDtkManagement();
+    loadUserValues();
+    initializeSalaryScale();
+    initializeShiftTypes();
+    initializeCalendar();
+    initializeEventListeners();
+    enhanceMobileUX(); // ADD THIS LINE
+    updateDataStats();
+}
+
+
+
     </script>
 </body>
 </html>
-
-
-
 
