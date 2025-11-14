@@ -3998,51 +3998,56 @@ https://www.opengov.gr/ypes/?p=8739<p>
         }
 
         function updateCalendar() {
-            const calendar = document.getElementById('calendar');
-            const currentMonth = document.getElementById('current-month');
-            
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth();
-            
-            // Ενημέρωση τίτλου
-            const monthNames = ['Ιανουάριος', 'Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάιος', 'Ιούνιος',
-                              'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος'];
-            currentMonth.textContent = `${monthNames[month]} ${year}`;
-            
-            // Καθαρισμός ημερολογίου
-            calendar.innerHTML = '';
-            
-            // Προσθήκη ημερών εβδομάδας
-            const daysOfWeek = ['Κυρ', 'Δευ', 'Τρι', 'Τετ', 'Πεμ', 'Παρ', 'Σαβ'];
-            daysOfWeek.forEach(day => {
-                const dayHeader = document.createElement('div');
-                dayHeader.className = 'calendar-day-header';
-                dayHeader.textContent = day;
-                calendar.appendChild(dayHeader);
-            });
-            
-            // Πρώτη ημέρα του μήνα
-            const firstDay = new Date(year, month, 1);
-            // Τελευταία ημέρα του μήνα
-            const lastDay = new Date(year, month + 1, 0);
-            
-            // Κενά κελιά πριν την πρώτη ημέρα
-            for (let i = 0; i < firstDay.getDay(); i++) {
-                const emptyDay = document.createElement('div');
-                emptyDay.className = 'calendar-day empty';
-                calendar.appendChild(emptyDay);
-            }
-            
-            // Ημέρες του μήνα
-            for (let day = 1; day <= lastDay.getDate(); day++) {
-                const dayElement = document.createElement('div');
-                dayElement.className = 'calendar-day';
-                dayElement.innerHTML = `<div class="day-number">${day}</div>`;
-                
-                const currentDateStr = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-                const dayShifts = shifts.filter(shift => shift.date === currentDateStr);
-                
-                        dayShifts.forEach(shift => {
+    const calendar = document.getElementById('calendar');
+    const currentMonth = document.getElementById('current-month');
+    
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    
+    // Ενημέρωση τίτλου
+    const monthNames = ['Ιανουάριος', 'Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάιος', 'Ιούνιος',
+                      'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος'];
+    currentMonth.textContent = `${monthNames[month]} ${year}`;
+    
+    // Καθαρισμός ημερολογίου
+    calendar.innerHTML = '';
+    
+    // ΑΛΛΑΓΗ: Ημέρες εβδομάδας ξεκινώντας από ΔΕΥΤΕΡΑ
+    const daysOfWeek = ['Δευ', 'Τρι', 'Τετ', 'Πεμ', 'Παρ', 'Σαβ', 'Κυρ'];
+    daysOfWeek.forEach(day => {
+        const dayHeader = document.createElement('div');
+        dayHeader.className = 'calendar-day-header';
+        dayHeader.textContent = day;
+        calendar.appendChild(dayHeader);
+    });
+    
+    // Πρώτη ημέρα του μήνα
+    const firstDay = new Date(year, month, 1);
+    // ΑΛΛΑΓΗ: Μετατόπιση για να ξεκινά από Δευτέρα (0=Κυριακή, 1=Δευτέρα, ... 6=Σάββατο)
+    // Αν η πρώτη ημέρα είναι Κυριακή (0), θέλουμε 6 κενά, Δευτέρα (1) θέλουμε 0 κενά, κ.ο.κ.
+    let startingDay = firstDay.getDay() - 1;
+    if (startingDay < 0) startingDay = 6; // Αν είναι Κυριακή (0-1=-1), γίνεται 6
+    
+    // Κενά κελιά πριν την πρώτη ημέρα
+    for (let i = 0; i < startingDay; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'calendar-day empty';
+        calendar.appendChild(emptyDay);
+    }
+    
+    // Τελευταία ημέρα του μήνα
+    const lastDay = new Date(year, month + 1, 0);
+    
+    // Ημέρες του μήνα
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'calendar-day';
+        dayElement.innerHTML = `<div class="day-number">${day}</div>`;
+        
+        const currentDateStr = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        const dayShifts = shifts.filter(shift => shift.date === currentDateStr);
+        
+        dayShifts.forEach(shift => {
             const shiftType = shiftTypes.find(t => t.id === shift.typeId);
             if (shiftType) {
                 const shiftInfo = document.createElement('div');
@@ -4054,25 +4059,15 @@ https://www.opengov.gr/ypes/?p=8739<p>
                     shiftInfo.textContent += ` ${shift.rate}€`;
                 }
                 dayElement.appendChild(shiftInfo);
-                
-                // 👈 ΠΡΟΣΘΗΚΗ: Εμφάνιση εικονιδίου για σχόλια αν υπάρχουν
-                if (shift.comments && shift.comments.trim() !== '') {
-                    const commentIcon = document.createElement('div');
-                    commentIcon.className = 'comment-indicator';
-                    commentIcon.innerHTML = '💬';
-                    commentIcon.style.fontSize = '0.7rem';
-                    commentIcon.style.marginTop = '2px';
-                    commentIcon.title = shift.comments;
-                    dayElement.appendChild(commentIcon);
-                }
             }
-        });                
-                dayElement.addEventListener('click', () => editShift(currentDateStr));
-                calendar.appendChild(dayElement);
-            }
-            
-            calculateEarnings();
-        }
+        });
+        
+        dayElement.addEventListener('click', () => editShift(currentDateStr));
+        calendar.appendChild(dayElement);
+    }
+    
+    calculateEarnings();
+}
 
         function previousMonth() {
             currentDate.setMonth(currentDate.getMonth() - 1);
@@ -4641,4 +4636,5 @@ function initializeSystem() {
     </script>
 </body>
 </html>
+
 
